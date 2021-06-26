@@ -31,7 +31,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
         index: _selectedIndex,
       ),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey.shade100,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -47,8 +47,8 @@ class _BottomNavBarState extends State<BottomNavBar> {
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.blue,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.black,
         elevation: 5,
         onTap: _onItemTapped,
       ),
