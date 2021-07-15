@@ -8,6 +8,7 @@ List<BlogCardModel> blogLsit = [
     docName: 'Dr. Wang Shu',
     docTitle: 'Cardiac Specialist',
   ),
+
   BlogCardModel(
     imageUrl:
         "https://images.unsplash.com/photo-1505751172876-fa1923c5c528?ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9jdG9yfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80",

@@ -1,6 +1,6 @@
-import 'package:doctor_appointment/presentation/authentication/signin/login_screen.dart';
-import 'package:doctor_appointment/presentation/authentication/signup/signup_screen.dart';
-import 'package:doctor_appointment/presentation/authentication/welcome/components/background.dart';
+import 'package:doctor_appointment/presentation/pages/authentication/signin/login_screen.dart';
+import 'package:doctor_appointment/presentation/pages/authentication/signup/signup_screen.dart';
+import 'package:doctor_appointment/presentation/pages/authentication/welcome/components/background.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';

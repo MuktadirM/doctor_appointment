@@ -1,8 +1,66 @@
-import 'package:doctor_appointment/presentation/utils/blogCardList.dart';
+import 'package:doctor_appointment/application/blog/blog_bloc.dart';
+import 'package:doctor_appointment/domain/models/core/blog.dart';
+import 'package:doctor_appointment/injection.dart';
+import 'package:doctor_appointment/presentation/pages/blog/widgets/single_blog_view.dart';
+import 'package:doctor_appointment/presentation/pages/blog/widgets/user_blog_card.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class BlogCard extends StatelessWidget {
   const BlogCard({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) =>
+          getIt<BlogBloc>()..add(BlogEvent.watchAllBlogStarted(null)),
+      child: BlocBuilder<BlogBloc, BlogState>(
+        builder: (context, state) {
+          return state.map(
+            initial: (_) => _Initial(),
+            loadInProgress: (_) => _LoadInProgress(),
+            loadSuccess: (data) => _Successful(
+              posts: data.items.take(6).toList(),
+            ),
+            loadFailure: (value) => _LoadFailure(),
+          );
+        },
+      ),
+    );
+  }
+}
+
+class _LoadInProgress extends StatelessWidget {
+  const _LoadInProgress({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+class _Initial extends StatelessWidget {
+  const _Initial({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+class _LoadFailure extends StatelessWidget {
+  const _LoadFailure({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
+
+class _Successful extends StatelessWidget {
+  final List<Blog> posts;
+
+  const _Successful({required this.posts, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,80 +73,16 @@ class BlogCard extends StatelessWidget {
       physics: NeverScrollableScrollPhysics(),
       scrollDirection: Axis.vertical,
       children: List.generate(
-        blogLsit.length,
-        (i) {
-          return Container(
-            height: 135,
-            width: 180,
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-            child: Stack(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10.0),
-                  child: Image.network(
-                    blogLsit[i].imageUrl,
-                    fit: BoxFit.cover,
-                    height: 144,
-                    width: 200,
-                  ),
-                ),
-                Container(
-                  height: 144,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10.0),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.5),
-                        offset: Offset(0, 0),
-                      ),
-                    ],
-                  ),
-                ),
-                Positioned(
-                  bottom: 8.0,
-                  left: 10.0,
-                  right: 10.0,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      Text(
-                        blogLsit[i].blogTitle,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 14,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      Text(
-                        blogLsit[i].docName,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 2,
-                      ),
-                      Text(
-                        blogLsit[i].docTitle,
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 10,
-                          fontWeight: FontWeight.normal,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+        posts.length,
+        (index) {
+          return UserBlogCard(
+            () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => SingleBlogView(posts[index])));
+            },
+            blog: posts[index],
           );
         },
       ),

@@ -22,12 +22,6 @@ class _$AppointmentEventTearOff {
     );
   }
 
-  _AddAppointment addAppointment(Appointment appointment) {
-    return _AddAppointment(
-      appointment,
-    );
-  }
-
   _AppointmentItemReceived appointmentItemReceived(
       Either<ValueFailure, List<Appointment>> failureOrItems) {
     return _AppointmentItemReceived(
@@ -44,7 +38,6 @@ mixin _$AppointmentEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? filter) watchAllAppointmentStarted,
-    required TResult Function(Appointment appointment) addAppointment,
     required TResult Function(
             Either<ValueFailure, List<Appointment>> failureOrItems)
         appointmentItemReceived,
@@ -53,7 +46,6 @@ mixin _$AppointmentEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? filter)? watchAllAppointmentStarted,
-    TResult Function(Appointment appointment)? addAppointment,
     TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
         appointmentItemReceived,
     required TResult orElse(),
@@ -63,7 +55,6 @@ mixin _$AppointmentEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_watchAllAppointmentStarted value)
         watchAllAppointmentStarted,
-    required TResult Function(_AddAppointment value) addAppointment,
     required TResult Function(_AppointmentItemReceived value)
         appointmentItemReceived,
   }) =>
@@ -72,7 +63,6 @@ mixin _$AppointmentEvent {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_watchAllAppointmentStarted value)?
         watchAllAppointmentStarted,
-    TResult Function(_AddAppointment value)? addAppointment,
     TResult Function(_AppointmentItemReceived value)? appointmentItemReceived,
     required TResult orElse(),
   }) =>
@@ -165,7 +155,6 @@ class _$_watchAllAppointmentStarted implements _watchAllAppointmentStarted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? filter) watchAllAppointmentStarted,
-    required TResult Function(Appointment appointment) addAppointment,
     required TResult Function(
             Either<ValueFailure, List<Appointment>> failureOrItems)
         appointmentItemReceived,
@@ -177,7 +166,6 @@ class _$_watchAllAppointmentStarted implements _watchAllAppointmentStarted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? filter)? watchAllAppointmentStarted,
-    TResult Function(Appointment appointment)? addAppointment,
     TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
         appointmentItemReceived,
     required TResult orElse(),
@@ -193,7 +181,6 @@ class _$_watchAllAppointmentStarted implements _watchAllAppointmentStarted {
   TResult map<TResult extends Object?>({
     required TResult Function(_watchAllAppointmentStarted value)
         watchAllAppointmentStarted,
-    required TResult Function(_AddAppointment value) addAppointment,
     required TResult Function(_AppointmentItemReceived value)
         appointmentItemReceived,
   }) {
@@ -205,7 +192,6 @@ class _$_watchAllAppointmentStarted implements _watchAllAppointmentStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_watchAllAppointmentStarted value)?
         watchAllAppointmentStarted,
-    TResult Function(_AddAppointment value)? addAppointment,
     TResult Function(_AppointmentItemReceived value)? appointmentItemReceived,
     required TResult orElse(),
   }) {
@@ -224,133 +210,6 @@ abstract class _watchAllAppointmentStarted implements AppointmentEvent {
   @JsonKey(ignore: true)
   _$watchAllAppointmentStartedCopyWith<_watchAllAppointmentStarted>
       get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$AddAppointmentCopyWith<$Res> {
-  factory _$AddAppointmentCopyWith(
-          _AddAppointment value, $Res Function(_AddAppointment) then) =
-      __$AddAppointmentCopyWithImpl<$Res>;
-  $Res call({Appointment appointment});
-}
-
-/// @nodoc
-class __$AddAppointmentCopyWithImpl<$Res>
-    extends _$AppointmentEventCopyWithImpl<$Res>
-    implements _$AddAppointmentCopyWith<$Res> {
-  __$AddAppointmentCopyWithImpl(
-      _AddAppointment _value, $Res Function(_AddAppointment) _then)
-      : super(_value, (v) => _then(v as _AddAppointment));
-
-  @override
-  _AddAppointment get _value => super._value as _AddAppointment;
-
-  @override
-  $Res call({
-    Object? appointment = freezed,
-  }) {
-    return _then(_AddAppointment(
-      appointment == freezed
-          ? _value.appointment
-          : appointment // ignore: cast_nullable_to_non_nullable
-              as Appointment,
-    ));
-  }
-}
-
-/// @nodoc
-
-class _$_AddAppointment implements _AddAppointment {
-  const _$_AddAppointment(this.appointment);
-
-  @override
-  final Appointment appointment;
-
-  @override
-  String toString() {
-    return 'AppointmentEvent.addAppointment(appointment: $appointment)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _AddAppointment &&
-            (identical(other.appointment, appointment) ||
-                const DeepCollectionEquality()
-                    .equals(other.appointment, appointment)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(appointment);
-
-  @JsonKey(ignore: true)
-  @override
-  _$AddAppointmentCopyWith<_AddAppointment> get copyWith =>
-      __$AddAppointmentCopyWithImpl<_AddAppointment>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function(String? filter) watchAllAppointmentStarted,
-    required TResult Function(Appointment appointment) addAppointment,
-    required TResult Function(
-            Either<ValueFailure, List<Appointment>> failureOrItems)
-        appointmentItemReceived,
-  }) {
-    return addAppointment(appointment);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? filter)? watchAllAppointmentStarted,
-    TResult Function(Appointment appointment)? addAppointment,
-    TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
-        appointmentItemReceived,
-    required TResult orElse(),
-  }) {
-    if (addAppointment != null) {
-      return addAppointment(appointment);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_watchAllAppointmentStarted value)
-        watchAllAppointmentStarted,
-    required TResult Function(_AddAppointment value) addAppointment,
-    required TResult Function(_AppointmentItemReceived value)
-        appointmentItemReceived,
-  }) {
-    return addAppointment(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_watchAllAppointmentStarted value)?
-        watchAllAppointmentStarted,
-    TResult Function(_AddAppointment value)? addAppointment,
-    TResult Function(_AppointmentItemReceived value)? appointmentItemReceived,
-    required TResult orElse(),
-  }) {
-    if (addAppointment != null) {
-      return addAppointment(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _AddAppointment implements AppointmentEvent {
-  const factory _AddAppointment(Appointment appointment) = _$_AddAppointment;
-
-  Appointment get appointment => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$AddAppointmentCopyWith<_AddAppointment> get copyWith =>
-      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -423,7 +282,6 @@ class _$_AppointmentItemReceived implements _AppointmentItemReceived {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? filter) watchAllAppointmentStarted,
-    required TResult Function(Appointment appointment) addAppointment,
     required TResult Function(
             Either<ValueFailure, List<Appointment>> failureOrItems)
         appointmentItemReceived,
@@ -435,7 +293,6 @@ class _$_AppointmentItemReceived implements _AppointmentItemReceived {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? filter)? watchAllAppointmentStarted,
-    TResult Function(Appointment appointment)? addAppointment,
     TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
         appointmentItemReceived,
     required TResult orElse(),
@@ -451,7 +308,6 @@ class _$_AppointmentItemReceived implements _AppointmentItemReceived {
   TResult map<TResult extends Object?>({
     required TResult Function(_watchAllAppointmentStarted value)
         watchAllAppointmentStarted,
-    required TResult Function(_AddAppointment value) addAppointment,
     required TResult Function(_AppointmentItemReceived value)
         appointmentItemReceived,
   }) {
@@ -463,7 +319,6 @@ class _$_AppointmentItemReceived implements _AppointmentItemReceived {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_watchAllAppointmentStarted value)?
         watchAllAppointmentStarted,
-    TResult Function(_AddAppointment value)? addAppointment,
     TResult Function(_AppointmentItemReceived value)? appointmentItemReceived,
     required TResult orElse(),
   }) {
@@ -509,12 +364,6 @@ class _$AppointmentStateTearOff {
       failure,
     );
   }
-
-  _FailToAdd failToAdd(ValueFailure failure) {
-    return _FailToAdd(
-      failure,
-    );
-  }
 }
 
 /// @nodoc
@@ -528,7 +377,6 @@ mixin _$AppointmentState {
     required TResult Function() loadInProgress,
     required TResult Function(List<Appointment> items) loadSuccess,
     required TResult Function(ValueFailure failure) loadFailure,
-    required TResult Function(ValueFailure failure) failToAdd,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -537,7 +385,6 @@ mixin _$AppointmentState {
     TResult Function()? loadInProgress,
     TResult Function(List<Appointment> items)? loadSuccess,
     TResult Function(ValueFailure failure)? loadFailure,
-    TResult Function(ValueFailure failure)? failToAdd,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -547,7 +394,6 @@ mixin _$AppointmentState {
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
     required TResult Function(_LoadFailure value) loadFailure,
-    required TResult Function(_FailToAdd value) failToAdd,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -556,7 +402,6 @@ mixin _$AppointmentState {
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
     TResult Function(_LoadFailure value)? loadFailure,
-    TResult Function(_FailToAdd value)? failToAdd,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -620,7 +465,6 @@ class _$_Initial implements _Initial {
     required TResult Function() loadInProgress,
     required TResult Function(List<Appointment> items) loadSuccess,
     required TResult Function(ValueFailure failure) loadFailure,
-    required TResult Function(ValueFailure failure) failToAdd,
   }) {
     return initial();
   }
@@ -632,7 +476,6 @@ class _$_Initial implements _Initial {
     TResult Function()? loadInProgress,
     TResult Function(List<Appointment> items)? loadSuccess,
     TResult Function(ValueFailure failure)? loadFailure,
-    TResult Function(ValueFailure failure)? failToAdd,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -648,7 +491,6 @@ class _$_Initial implements _Initial {
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
     required TResult Function(_LoadFailure value) loadFailure,
-    required TResult Function(_FailToAdd value) failToAdd,
   }) {
     return initial(this);
   }
@@ -660,7 +502,6 @@ class _$_Initial implements _Initial {
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
     TResult Function(_LoadFailure value)? loadFailure,
-    TResult Function(_FailToAdd value)? failToAdd,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -718,7 +559,6 @@ class _$_LoadInProgress implements _LoadInProgress {
     required TResult Function() loadInProgress,
     required TResult Function(List<Appointment> items) loadSuccess,
     required TResult Function(ValueFailure failure) loadFailure,
-    required TResult Function(ValueFailure failure) failToAdd,
   }) {
     return loadInProgress();
   }
@@ -730,7 +570,6 @@ class _$_LoadInProgress implements _LoadInProgress {
     TResult Function()? loadInProgress,
     TResult Function(List<Appointment> items)? loadSuccess,
     TResult Function(ValueFailure failure)? loadFailure,
-    TResult Function(ValueFailure failure)? failToAdd,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -746,7 +585,6 @@ class _$_LoadInProgress implements _LoadInProgress {
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
     required TResult Function(_LoadFailure value) loadFailure,
-    required TResult Function(_FailToAdd value) failToAdd,
   }) {
     return loadInProgress(this);
   }
@@ -758,7 +596,6 @@ class _$_LoadInProgress implements _LoadInProgress {
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
     TResult Function(_LoadFailure value)? loadFailure,
-    TResult Function(_FailToAdd value)? failToAdd,
     required TResult orElse(),
   }) {
     if (loadInProgress != null) {
@@ -841,7 +678,6 @@ class _$_LoadSuccess implements _LoadSuccess {
     required TResult Function() loadInProgress,
     required TResult Function(List<Appointment> items) loadSuccess,
     required TResult Function(ValueFailure failure) loadFailure,
-    required TResult Function(ValueFailure failure) failToAdd,
   }) {
     return loadSuccess(items);
   }
@@ -853,7 +689,6 @@ class _$_LoadSuccess implements _LoadSuccess {
     TResult Function()? loadInProgress,
     TResult Function(List<Appointment> items)? loadSuccess,
     TResult Function(ValueFailure failure)? loadFailure,
-    TResult Function(ValueFailure failure)? failToAdd,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -869,7 +704,6 @@ class _$_LoadSuccess implements _LoadSuccess {
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
     required TResult Function(_LoadFailure value) loadFailure,
-    required TResult Function(_FailToAdd value) failToAdd,
   }) {
     return loadSuccess(this);
   }
@@ -881,7 +715,6 @@ class _$_LoadSuccess implements _LoadSuccess {
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
     TResult Function(_LoadFailure value)? loadFailure,
-    TResult Function(_FailToAdd value)? failToAdd,
     required TResult orElse(),
   }) {
     if (loadSuccess != null) {
@@ -978,7 +811,6 @@ class _$_LoadFailure implements _LoadFailure {
     required TResult Function() loadInProgress,
     required TResult Function(List<Appointment> items) loadSuccess,
     required TResult Function(ValueFailure failure) loadFailure,
-    required TResult Function(ValueFailure failure) failToAdd,
   }) {
     return loadFailure(failure);
   }
@@ -990,7 +822,6 @@ class _$_LoadFailure implements _LoadFailure {
     TResult Function()? loadInProgress,
     TResult Function(List<Appointment> items)? loadSuccess,
     TResult Function(ValueFailure failure)? loadFailure,
-    TResult Function(ValueFailure failure)? failToAdd,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -1006,7 +837,6 @@ class _$_LoadFailure implements _LoadFailure {
     required TResult Function(_LoadInProgress value) loadInProgress,
     required TResult Function(_LoadSuccess value) loadSuccess,
     required TResult Function(_LoadFailure value) loadFailure,
-    required TResult Function(_FailToAdd value) failToAdd,
   }) {
     return loadFailure(this);
   }
@@ -1018,7 +848,6 @@ class _$_LoadFailure implements _LoadFailure {
     TResult Function(_LoadInProgress value)? loadInProgress,
     TResult Function(_LoadSuccess value)? loadSuccess,
     TResult Function(_LoadFailure value)? loadFailure,
-    TResult Function(_FailToAdd value)? failToAdd,
     required TResult orElse(),
   }) {
     if (loadFailure != null) {
@@ -1034,141 +863,5 @@ abstract class _LoadFailure implements AppointmentState {
   ValueFailure get failure => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$LoadFailureCopyWith<_LoadFailure> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class _$FailToAddCopyWith<$Res> {
-  factory _$FailToAddCopyWith(
-          _FailToAdd value, $Res Function(_FailToAdd) then) =
-      __$FailToAddCopyWithImpl<$Res>;
-  $Res call({ValueFailure failure});
-
-  $ValueFailureCopyWith<$Res> get failure;
-}
-
-/// @nodoc
-class __$FailToAddCopyWithImpl<$Res>
-    extends _$AppointmentStateCopyWithImpl<$Res>
-    implements _$FailToAddCopyWith<$Res> {
-  __$FailToAddCopyWithImpl(_FailToAdd _value, $Res Function(_FailToAdd) _then)
-      : super(_value, (v) => _then(v as _FailToAdd));
-
-  @override
-  _FailToAdd get _value => super._value as _FailToAdd;
-
-  @override
-  $Res call({
-    Object? failure = freezed,
-  }) {
-    return _then(_FailToAdd(
-      failure == freezed
-          ? _value.failure
-          : failure // ignore: cast_nullable_to_non_nullable
-              as ValueFailure,
-    ));
-  }
-
-  @override
-  $ValueFailureCopyWith<$Res> get failure {
-    return $ValueFailureCopyWith<$Res>(_value.failure, (value) {
-      return _then(_value.copyWith(failure: value));
-    });
-  }
-}
-
-/// @nodoc
-
-class _$_FailToAdd implements _FailToAdd {
-  const _$_FailToAdd(this.failure);
-
-  @override
-  final ValueFailure failure;
-
-  @override
-  String toString() {
-    return 'AppointmentState.failToAdd(failure: $failure)';
-  }
-
-  @override
-  bool operator ==(dynamic other) {
-    return identical(this, other) ||
-        (other is _FailToAdd &&
-            (identical(other.failure, failure) ||
-                const DeepCollectionEquality().equals(other.failure, failure)));
-  }
-
-  @override
-  int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(failure);
-
-  @JsonKey(ignore: true)
-  @override
-  _$FailToAddCopyWith<_FailToAdd> get copyWith =>
-      __$FailToAddCopyWithImpl<_FailToAdd>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() loadInProgress,
-    required TResult Function(List<Appointment> items) loadSuccess,
-    required TResult Function(ValueFailure failure) loadFailure,
-    required TResult Function(ValueFailure failure) failToAdd,
-  }) {
-    return failToAdd(failure);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? loadInProgress,
-    TResult Function(List<Appointment> items)? loadSuccess,
-    TResult Function(ValueFailure failure)? loadFailure,
-    TResult Function(ValueFailure failure)? failToAdd,
-    required TResult orElse(),
-  }) {
-    if (failToAdd != null) {
-      return failToAdd(failure);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_LoadInProgress value) loadInProgress,
-    required TResult Function(_LoadSuccess value) loadSuccess,
-    required TResult Function(_LoadFailure value) loadFailure,
-    required TResult Function(_FailToAdd value) failToAdd,
-  }) {
-    return failToAdd(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_LoadInProgress value)? loadInProgress,
-    TResult Function(_LoadSuccess value)? loadSuccess,
-    TResult Function(_LoadFailure value)? loadFailure,
-    TResult Function(_FailToAdd value)? failToAdd,
-    required TResult orElse(),
-  }) {
-    if (failToAdd != null) {
-      return failToAdd(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _FailToAdd implements AppointmentState {
-  const factory _FailToAdd(ValueFailure failure) = _$_FailToAdd;
-
-  ValueFailure get failure => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  _$FailToAddCopyWith<_FailToAdd> get copyWith =>
       throw _privateConstructorUsedError;
 }

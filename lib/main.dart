@@ -1,20 +1,32 @@
-import 'package:doctor_appointment/presentation/authentication/welcome/welcome_screen.dart';
+import 'package:doctor_appointment/injection.dart';
+import 'package:doctor_appointment/presentation/app_widget.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:injectable/injectable.dart';
 
-void main() {
-  runApp(MyApp());
+Future<void> main() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    configureInjection(Environment.prod);
+    //forcing app to maintain website theme
+  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+  //     systemNavigationBarColor: Color(0xFF3b2617), // navigation bar color
+  //     statusBarColor: Color(0xFF3b2617) // status bar color
+  //     ));
+  await Firebase.initializeApp();
+    runApp(App());
 }
 
-class MyApp extends StatelessWidget {
+class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Doctor Appointment',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: WelcomeScreen(),
+      home: AppWidget(),
     );
   }
 }

@@ -1,7 +1,7 @@
-import 'package:doctor_appointment/presentation/authentication/signin/components/body.dart';
+import 'package:doctor_appointment/presentation/pages/authentication/welcome/components/body.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
+class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

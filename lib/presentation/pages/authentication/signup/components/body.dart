@@ -1,6 +1,6 @@
-import 'package:doctor_appointment/presentation/authentication/signup/components/background.dart';
-import 'package:doctor_appointment/presentation/authentication/signup/components/or_divider.dart';
-import 'package:doctor_appointment/presentation/authentication/signup/components/social_icon.dart';
+import 'package:doctor_appointment/presentation/pages/authentication/signup/components/background.dart';
+import 'package:doctor_appointment/presentation/pages/authentication/signup/components/or_divider.dart';
+import 'package:doctor_appointment/presentation/pages/authentication/signup/components/social_icon.dart';
 import 'package:doctor_appointment/presentation/bottom_nav_bar.dart';
 import 'package:doctor_appointment/presentation/constants.dart';
 import 'package:flutter/material.dart';

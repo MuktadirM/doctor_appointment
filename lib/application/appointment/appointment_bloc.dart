@@ -31,12 +31,6 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
                   (successOrFailure) => add(AppointmentEvent.appointmentItemReceived(successOrFailure)));
         },
 
-        addAppointment: (_AddAppointment value) async* {
-          final data = _services.addAppointment(value.appointment);
-          data.then((value) => {
-            value.fold((l) => (l)=>{ AppointmentState.failToAdd(l) }, (r) => null)
-          });
-        },
         appointmentItemReceived: (_AppointmentItemReceived value) async* {
           final data = value.failureOrItems;
           yield data.fold((l) => _LoadFailure(l), (r) => _LoadSuccess(r));

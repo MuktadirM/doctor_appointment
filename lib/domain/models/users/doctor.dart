@@ -13,6 +13,7 @@ class Doctor extends Profile {
     String? email,
     String? phone,
     String? key,
+    String? image,
     DateTime? createdAt,
     String? createdBy,
     DateTime? updatedAt,
@@ -20,6 +21,7 @@ class Doctor extends Profile {
   }) : super(
           type: type,
           name: name,
+          image: image,
           email: email,
           phone: phone,
           key: key,
@@ -36,6 +38,7 @@ class Doctor extends Profile {
     String? email,
     String? phone,
     String? key,
+    String? image,
     DateTime? createdAt,
     String? createdBy,
     DateTime? updatedAt,
@@ -45,6 +48,7 @@ class Doctor extends Profile {
         docType: docType ?? this.docType,
         type: type ?? this.type,
         name: name ?? this.name,
+        image: image ?? this.image,
         email: email ?? this.email,
         phone: phone ?? this.phone,
         key: key ?? this.key,
@@ -59,7 +63,14 @@ class Doctor extends Profile {
       'docType': enumDocTypeToString(docType),
       'type': enumTypeToString(type),
       'name': name,
+      'image': image,
+      'phone': phone,
       'email': email,
+      'key': key,
+      'createdAt': createdAt,
+      'createdBy': createdBy,
+      'updatedAt': updatedAt,
+      'deletedAt': deletedAt,
     };
   }
 
@@ -67,13 +78,14 @@ class Doctor extends Profile {
     return Doctor(
       docType: enumDocTypeFromString(map['docType']),
       type: enumTypeFromString(map['type']),
-      name: map['name'],
-      email: map['email'],
-      phone: map['phone'],
+      name: map['name'] == null? null:map['name'],
+      image: map['image'] == null? null:map['image'],
+      email: map['email'] == null? null:map['email'],
+      //phone: map['phone'] == null? null:map['phone'],
       key: map['key'] as String,
-      createdAt: DateTime.parse(map['createdAt']),
+      createdAt: map['createdAt'].toDate(),
       createdBy: map['createdBy'].toString(),
-      updatedAt: DateTime.parse(map['updatedAt']),
+      updatedAt: map['updatedAt'].toDate(),
       deletedAt:
           map['deletedAt'] == null ? null : DateTime.parse(map['deletedAt']),
     );

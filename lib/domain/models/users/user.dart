@@ -6,11 +6,13 @@ class User extends DomainObject {
   final String? name;
   final String? email;
   final UserType type;
+  final String? image;
   final String? phone;
   User({
+    required this.type,
     this.name,
     this.email,
-    required this.type,
+    this.image,
     this.phone,
     String? key,
     DateTime? createdAt,
@@ -27,6 +29,7 @@ class User extends DomainObject {
 
   User copyWith({
     String? name,
+    String? image,
     String? email,
     UserType? type,
     String? phone,
@@ -37,16 +40,22 @@ class User extends DomainObject {
     DateTime? deletedAt,
   }) {
     return User(
-      name: name ?? this.name,
-      email: email ?? this.email,
-      type: type ?? this.type,
-      phone: phone ?? this.phone,
-    );
+        name: name ?? this.name,
+        image: image ?? this.image,
+        email: email ?? this.email,
+        type: type ?? this.type,
+        phone: phone ?? this.phone,
+        key: key ?? this.key,
+        createdAt: createdAt ?? this.createdAt,
+        createdBy: createdBy ?? this.createdBy,
+        updatedAt: updatedAt ?? this.updatedAt,
+        deletedAt: deletedAt ?? this.deletedAt);
   }
 
   Map<String, dynamic> toMap() {
     return {
       'name': name,
+      'image':image,
       'email': email,
       'type': enumTypeToString(type),
       'phone': phone,
@@ -61,6 +70,7 @@ class User extends DomainObject {
   factory User.fromMap(Map<String, dynamic> map) {
     return User(
       name: map['name'],
+      image: map['image'],
       email: map['email'],
       type: enumTypeFromString(map['type']),
       phone: map['phone'],

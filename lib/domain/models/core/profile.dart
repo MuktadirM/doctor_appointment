@@ -8,9 +8,11 @@ class Profile extends DomainObject {
   final String? email;
   final UserType type;
   final String? phone;
+  final String? image;
 
   Profile({
     required this.type,
+    this.image,
     this.name,
     this.email,
     this.phone,

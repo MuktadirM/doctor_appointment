@@ -47,6 +47,11 @@ class Blog extends DomainObject {
       'doctor': doctor!.toMap(),
       'title': title,
       'description': description,
+      'key': key,
+      'createdAt': createdAt,
+      'createdBy': createdBy,
+      'updatedAt': updatedAt,
+      'deletedAt': deletedAt,
     };
   }
 
@@ -56,9 +61,9 @@ class Blog extends DomainObject {
       title: map['title'],
       description: map['description'],
       key: map['key'] as String,
-      createdAt: DateTime.parse(map['createdAt']),
+      createdAt: map['createdAt'].toDate(),
       createdBy: map['createdBy'].toString(),
-      updatedAt: DateTime.parse(map['updatedAt']),
+      updatedAt: map['updatedAt'].toDate(),
       deletedAt:
           map['deletedAt'] == null ? null : DateTime.parse(map['deletedAt']),
     );

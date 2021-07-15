@@ -1,4 +1,4 @@
-import 'package:doctor_appointment/presentation/authentication/signin/components/background.dart';
+import 'package:doctor_appointment/presentation/pages/authentication/signin/components/background.dart';
 import 'package:doctor_appointment/presentation/bottom_nav_bar.dart';
 import 'package:doctor_appointment/presentation/constants.dart';
 import 'package:flutter/material.dart';

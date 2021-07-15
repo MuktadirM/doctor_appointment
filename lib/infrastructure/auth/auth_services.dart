@@ -24,7 +24,7 @@ class AuthServices implements IAuthServices {
   Future<Either<Unit, Profile>> getSignInUser() async {
     //* To load different user change user type
     final profile = Profile(
-        name: 'salam', email: 'parent@gmail.com', type: UserType.doctor);
+        name: 'salam', email: 'parent@gmail.com', type: UserType.user);
     if (profile != null) {
       return right(profile);
     }

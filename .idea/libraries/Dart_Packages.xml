@@ -562,6 +562,13 @@
             </list>
           </value>
         </entry>
+        <entry key="pull_to_refresh">
+          <value>
+            <list>
+              <option value="$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/pull_to_refresh-2.0.0/lib" />
+            </list>
+          </value>
+        </entry>
         <entry key="shelf">
           <value>
             <list>
@@ -782,6 +789,7 @@
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/provider-5.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/pub_semver-2.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/pubspec_parse-1.0.0/lib" />
+      <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/pull_to_refresh-2.0.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/shelf-1.2.0/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/shelf_web_socket-1.0.1/lib" />
       <root url="file://$PROJECT_DIR$/../../../../src/flutter/.pub-cache/hosted/pub.dartlang.org/source_gen-1.0.2/lib" />

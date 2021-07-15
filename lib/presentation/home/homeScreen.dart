@@ -1,5 +1,10 @@
+import 'package:doctor_appointment/domain/models/core/blog.dart';
 import 'package:doctor_appointment/presentation/constants.dart';
 import 'package:doctor_appointment/presentation/home/widgets/blogCard.dart';
+import 'package:doctor_appointment/presentation/pages/blog/blogs_users_view.dart';
+import 'package:doctor_appointment/presentation/pages/blog/widgets/single_blog_view.dart';
+import 'package:doctor_appointment/presentation/pages/blog/widgets/user_blog_card.dart';
+import 'package:doctor_appointment/presentation/pages/doctor/all_doctor.dart';
 import 'package:doctor_appointment/presentation/utils/categoriesCardList.dart';
 import 'package:doctor_appointment/presentation/widgets/categorie_scroll.dart';
 import 'package:flutter/material.dart';
@@ -93,7 +98,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 onPressed: () {
                   HapticFeedback.vibrate();
-                  print('View All clicked');
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => AllDoctorView()));
                 },
                 child: const Text('view all'),
               ),
@@ -111,6 +116,9 @@ class HomeScreen extends StatelessWidget {
                 return Padding(
                   padding: const EdgeInsets.only(right: 15.0),
                   child: CategoriesScroll(
+                    (value) {
+                      Navigator.push(context, MaterialPageRoute(builder: (context) => AllDoctorView(filter:value)));
+                    },
                     baseColor: categoriesLsit[i].baseColor,
                     shadowColor: categoriesLsit[i].shadowColor,
                     iconData: categoriesLsit[i].iconData,
@@ -139,7 +147,7 @@ class HomeScreen extends StatelessWidget {
                 ),
                 onPressed: () {
                   HapticFeedback.vibrate();
-                  print('View All clicked');
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => UserBlogs()));
                 },
                 child: const Text('view all'),
               ),
@@ -151,3 +159,4 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+

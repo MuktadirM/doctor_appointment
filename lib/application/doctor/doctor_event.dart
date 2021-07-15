@@ -1,4 +1,8 @@
 part of 'doctor_bloc.dart';
 
-@immutable
-abstract class DoctorEvent {}
+@freezed
+class DoctorEvent with _$DoctorEvent{
+  const factory DoctorEvent.watchAllDoctorStarted(String? filter) = _watchAllDoctorStarted;
+  const factory DoctorEvent.doctorItemReceived(
+      Either<ValueFailure, List<Doctor>> failureOrItems) = _DoctorItemReceived;
+}
