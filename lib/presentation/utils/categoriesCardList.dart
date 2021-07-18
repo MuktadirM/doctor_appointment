@@ -14,7 +14,7 @@ List<CategoriesCard> categoriesLsit = [
     shadowColor: Colors.red.shade100,
     iconData: Icons.psychology,
     iconColor: Colors.red,
-    cardTitle: "Psychiatric",
+    cardTitle: "Psychiatrists",
   ),
   CategoriesCard(
     baseColor: Colors.green.shade200,
@@ -29,12 +29,5 @@ List<CategoriesCard> categoriesLsit = [
     iconData: Icons.family_restroom,
     iconColor: Colors.orange,
     cardTitle: "Family",
-  ),
-  CategoriesCard(
-    baseColor: Colors.deepPurple.shade200,
-    shadowColor: Colors.deepPurple.shade100,
-    iconData: Icons.theater_comedy,
-    iconColor: Colors.deepPurple,
-    cardTitle: "Dermatologi",
   ),
 ];

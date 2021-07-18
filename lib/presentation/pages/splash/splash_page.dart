@@ -12,7 +12,9 @@ class SplashPage extends StatelessWidget {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
         state.map(
-          initial: (_) {},
+          initial: (_) {
+            _PageWidget();
+          },
           authenticated: (data){
             switch(data.profile.type){
               case UserType.doctor:
@@ -26,6 +28,11 @@ class SplashPage extends StatelessWidget {
               case UserType.user:
                 Navigator.pushReplacement(context,
                   MaterialPageRoute(builder: (context)=> BottomNavBar()),
+                );
+                break;
+              default:
+                Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context)=> LoginScreen()),
                 );
                 break;
               }

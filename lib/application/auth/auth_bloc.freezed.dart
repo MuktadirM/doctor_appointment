@@ -20,6 +20,14 @@ class _$AuthEventTearOff {
     return const AuthCheckRequested();
   }
 
+  LoginWithEmailPass loginWithEmailPass(
+      {required String email, required String password}) {
+    return LoginWithEmailPass(
+      email: email,
+      password: password,
+    );
+  }
+
   SignedOut signedOut() {
     return const SignedOut();
   }
@@ -33,12 +41,14 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() authCheckRequested,
+    required TResult Function(String email, String password) loginWithEmailPass,
     required TResult Function() signedOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? authCheckRequested,
+    TResult Function(String email, String password)? loginWithEmailPass,
     TResult Function()? signedOut,
     required TResult orElse(),
   }) =>
@@ -46,12 +56,14 @@ mixin _$AuthEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AuthCheckRequested value) authCheckRequested,
+    required TResult Function(LoginWithEmailPass value) loginWithEmailPass,
     required TResult Function(SignedOut value) signedOut,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthCheckRequested value)? authCheckRequested,
+    TResult Function(LoginWithEmailPass value)? loginWithEmailPass,
     TResult Function(SignedOut value)? signedOut,
     required TResult orElse(),
   }) =>
@@ -114,6 +126,7 @@ class _$AuthCheckRequested implements AuthCheckRequested {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() authCheckRequested,
+    required TResult Function(String email, String password) loginWithEmailPass,
     required TResult Function() signedOut,
   }) {
     return authCheckRequested();
@@ -123,6 +136,7 @@ class _$AuthCheckRequested implements AuthCheckRequested {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? authCheckRequested,
+    TResult Function(String email, String password)? loginWithEmailPass,
     TResult Function()? signedOut,
     required TResult orElse(),
   }) {
@@ -136,6 +150,7 @@ class _$AuthCheckRequested implements AuthCheckRequested {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AuthCheckRequested value) authCheckRequested,
+    required TResult Function(LoginWithEmailPass value) loginWithEmailPass,
     required TResult Function(SignedOut value) signedOut,
   }) {
     return authCheckRequested(this);
@@ -145,6 +160,7 @@ class _$AuthCheckRequested implements AuthCheckRequested {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthCheckRequested value)? authCheckRequested,
+    TResult Function(LoginWithEmailPass value)? loginWithEmailPass,
     TResult Function(SignedOut value)? signedOut,
     required TResult orElse(),
   }) {
@@ -157,6 +173,140 @@ class _$AuthCheckRequested implements AuthCheckRequested {
 
 abstract class AuthCheckRequested implements AuthEvent {
   const factory AuthCheckRequested() = _$AuthCheckRequested;
+}
+
+/// @nodoc
+abstract class $LoginWithEmailPassCopyWith<$Res> {
+  factory $LoginWithEmailPassCopyWith(
+          LoginWithEmailPass value, $Res Function(LoginWithEmailPass) then) =
+      _$LoginWithEmailPassCopyWithImpl<$Res>;
+  $Res call({String email, String password});
+}
+
+/// @nodoc
+class _$LoginWithEmailPassCopyWithImpl<$Res>
+    extends _$AuthEventCopyWithImpl<$Res>
+    implements $LoginWithEmailPassCopyWith<$Res> {
+  _$LoginWithEmailPassCopyWithImpl(
+      LoginWithEmailPass _value, $Res Function(LoginWithEmailPass) _then)
+      : super(_value, (v) => _then(v as LoginWithEmailPass));
+
+  @override
+  LoginWithEmailPass get _value => super._value as LoginWithEmailPass;
+
+  @override
+  $Res call({
+    Object? email = freezed,
+    Object? password = freezed,
+  }) {
+    return _then(LoginWithEmailPass(
+      email: email == freezed
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String,
+      password: password == freezed
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$LoginWithEmailPass implements LoginWithEmailPass {
+  const _$LoginWithEmailPass({required this.email, required this.password});
+
+  @override
+  final String email;
+  @override
+  final String password;
+
+  @override
+  String toString() {
+    return 'AuthEvent.loginWithEmailPass(email: $email, password: $password)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is LoginWithEmailPass &&
+            (identical(other.email, email) ||
+                const DeepCollectionEquality().equals(other.email, email)) &&
+            (identical(other.password, password) ||
+                const DeepCollectionEquality()
+                    .equals(other.password, password)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(email) ^
+      const DeepCollectionEquality().hash(password);
+
+  @JsonKey(ignore: true)
+  @override
+  $LoginWithEmailPassCopyWith<LoginWithEmailPass> get copyWith =>
+      _$LoginWithEmailPassCopyWithImpl<LoginWithEmailPass>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() authCheckRequested,
+    required TResult Function(String email, String password) loginWithEmailPass,
+    required TResult Function() signedOut,
+  }) {
+    return loginWithEmailPass(email, password);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? authCheckRequested,
+    TResult Function(String email, String password)? loginWithEmailPass,
+    TResult Function()? signedOut,
+    required TResult orElse(),
+  }) {
+    if (loginWithEmailPass != null) {
+      return loginWithEmailPass(email, password);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(AuthCheckRequested value) authCheckRequested,
+    required TResult Function(LoginWithEmailPass value) loginWithEmailPass,
+    required TResult Function(SignedOut value) signedOut,
+  }) {
+    return loginWithEmailPass(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(AuthCheckRequested value)? authCheckRequested,
+    TResult Function(LoginWithEmailPass value)? loginWithEmailPass,
+    TResult Function(SignedOut value)? signedOut,
+    required TResult orElse(),
+  }) {
+    if (loginWithEmailPass != null) {
+      return loginWithEmailPass(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class LoginWithEmailPass implements AuthEvent {
+  const factory LoginWithEmailPass(
+      {required String email, required String password}) = _$LoginWithEmailPass;
+
+  String get email => throw _privateConstructorUsedError;
+  String get password => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $LoginWithEmailPassCopyWith<LoginWithEmailPass> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -197,6 +347,7 @@ class _$SignedOut implements SignedOut {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() authCheckRequested,
+    required TResult Function(String email, String password) loginWithEmailPass,
     required TResult Function() signedOut,
   }) {
     return signedOut();
@@ -206,6 +357,7 @@ class _$SignedOut implements SignedOut {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? authCheckRequested,
+    TResult Function(String email, String password)? loginWithEmailPass,
     TResult Function()? signedOut,
     required TResult orElse(),
   }) {
@@ -219,6 +371,7 @@ class _$SignedOut implements SignedOut {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(AuthCheckRequested value) authCheckRequested,
+    required TResult Function(LoginWithEmailPass value) loginWithEmailPass,
     required TResult Function(SignedOut value) signedOut,
   }) {
     return signedOut(this);
@@ -228,6 +381,7 @@ class _$SignedOut implements SignedOut {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(AuthCheckRequested value)? authCheckRequested,
+    TResult Function(LoginWithEmailPass value)? loginWithEmailPass,
     TResult Function(SignedOut value)? signedOut,
     required TResult orElse(),
   }) {

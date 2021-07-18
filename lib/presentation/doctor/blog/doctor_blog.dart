@@ -90,11 +90,11 @@ class _DoctorBlogViewState extends State<DoctorBlogView> {
 class _Successful extends StatelessWidget {
   final title;
   final List<Blog> posts;
-  late RefreshController _refreshController;
-  late Function _onRefresh;
-  late Function _onLoading;
+  final RefreshController _refreshController;
+  final Function _onRefresh;
+  final Function _onLoading;
 
-  _Successful(this.posts,this._refreshController,this._onRefresh,this._onLoading, {this.title, Key? key}) : super(key: key);
+  const _Successful(this.posts,this._refreshController,this._onRefresh,this._onLoading, {this.title, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

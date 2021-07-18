@@ -22,8 +22,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     AuthEvent event,
   ) async* {
     yield* event.map(
-        authCheckRequested: (e) async*{
+        authCheckRequested: (e) async* {
           final auth = await _authServices.getSignInUser();
+          yield auth.fold(
+                  (_) =>const Unauthenticated(),
+                  (profile) => Authenticated(profile));
+        },
+        loginWithEmailPass: (e) async*{
+          final auth = await _authServices.loginWithEmailPass(e.email, e.password);
           yield auth.fold(
                   (_) =>const Unauthenticated(),
                   (profile) => Authenticated(profile));

@@ -44,9 +44,9 @@ class DomainObject {
   factory DomainObject.fromMap(Map<String, dynamic> map) {
     return DomainObject(
       key: map['key'].toString(),
-      createdAt: DateTime.parse(map['createdAt']),
+      createdAt: map['createdAt'].toDate(),
       createdBy: map['createdBy'].toString(),
-      updatedAt: DateTime.parse(map['updatedAt']),
+      updatedAt: map['updatedAt'].toDate(),
       deletedAt:
           map['deletedAt'] == null ? null : DateTime.parse(map['deletedAt']),
     );

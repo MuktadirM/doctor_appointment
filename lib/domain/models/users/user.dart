@@ -2,13 +2,14 @@ import 'dart:convert';
 import 'package:doctor_appointment/domain/models/core/domain_object.dart';
 import 'package:doctor_appointment/domain/utils/user_type.dart';
 
-class User extends DomainObject {
+class UserApp extends DomainObject {
   final String? name;
   final String? email;
   final UserType type;
   final String? image;
   final String? phone;
-  User({
+
+  UserApp({
     required this.type,
     this.name,
     this.email,
@@ -27,7 +28,7 @@ class User extends DomainObject {
           deletedAt: deletedAt,
         );
 
-  User copyWith({
+  UserApp copyWith({
     String? name,
     String? image,
     String? email,
@@ -39,7 +40,7 @@ class User extends DomainObject {
     DateTime? updatedAt,
     DateTime? deletedAt,
   }) {
-    return User(
+    return UserApp(
         name: name ?? this.name,
         image: image ?? this.image,
         email: email ?? this.email,
@@ -67,25 +68,25 @@ class User extends DomainObject {
     };
   }
 
-  factory User.fromMap(Map<String, dynamic> map) {
-    return User(
+  factory UserApp.fromMap(Map<String, dynamic> map) {
+    return UserApp(
       name: map['name'],
       image: map['image'],
       email: map['email'],
-      type: enumTypeFromString(map['type']),
       phone: map['phone'],
-      key: map['key'] as String,
-      createdAt: DateTime.parse(map['createdAt']),
+      type: enumTypeFromString(map['type']),
+      key: map['key'],
+      createdAt: map['createdAt'].toDate(),
       createdBy: map['createdBy'].toString(),
-      updatedAt: DateTime.parse(map['updatedAt']),
+      updatedAt: map['updatedAt'].toDate(),
       deletedAt:
-          map['deletedAt'] == null ? null : DateTime.parse(map['deletedAt']),
+          map['deletedAt'] == null ? null : map['deletedAt'].toDate(),
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory User.fromJson(String source) => User.fromMap(json.decode(source));
+  factory UserApp.fromJson(String source) => UserApp.fromMap(json.decode(source));
 
   @override
   String toString() {
@@ -96,7 +97,7 @@ class User extends DomainObject {
   bool operator ==(Object other) {
     if (identical(this, other)) return true;
 
-    return other is User &&
+    return other is UserApp &&
         other.name == name &&
         other.email == email &&
         other.type == type &&
@@ -110,7 +111,7 @@ class User extends DomainObject {
 
   static UserType enumTypeFromString(String typeString) =>
       UserType.values.firstWhere(
-          (type) => type.toString() == "UserType.${typeString.toLowerCase()}");
+              (type) => type.toString() == "UserType.${typeString.toLowerCase()}");
 
   static String enumTypeToString<T>(T type) =>
       type.toString().split(".")[1].toUpperCase();

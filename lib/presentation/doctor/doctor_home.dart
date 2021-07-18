@@ -1,5 +1,6 @@
 import 'package:doctor_appointment/presentation/doctor/blog/doctor_blog.dart';
 import 'package:doctor_appointment/presentation/doctor/home/appointment.dart';
+import 'package:doctor_appointment/presentation/pages/user_profile/user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -17,6 +18,7 @@ class _DoctorHomeState extends State<DoctorHome> {
   static List<Widget> _widgetOptions = <Widget>[
     DoctorAppointmentView(),
     DoctorBlogView(),
+    UserProfile()
   ];
 
   void _onItemTapped(int index) {
@@ -51,6 +53,11 @@ class _DoctorHomeState extends State<DoctorHome> {
             BottomNavigationBarItem(
               icon: Icon(Icons.message),
               label: 'Blog',
+            ),
+
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
             ),
           ],
           currentIndex: _selectedIndex,

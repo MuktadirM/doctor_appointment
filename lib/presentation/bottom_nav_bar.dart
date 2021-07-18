@@ -1,5 +1,6 @@
 import 'package:doctor_appointment/presentation/appointment/appointmentScreen.dart';
 import 'package:doctor_appointment/presentation/home/homeScreen.dart';
+import 'package:doctor_appointment/presentation/pages/user_profile/user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -14,7 +15,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   static List<Widget> _widgetOptions = <Widget>[
     HomeScreen(),
     AppointmentScreen(),
-    AppointmentScreen()
+    UserProfile()
   ];
 
   void _onItemTapped(int index) {

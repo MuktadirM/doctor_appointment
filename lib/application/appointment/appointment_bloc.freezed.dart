@@ -22,9 +22,23 @@ class _$AppointmentEventTearOff {
     );
   }
 
+  _watchAllUserAppointmentStarted watchAllUserAppointmentStarted(
+      String? filter) {
+    return _watchAllUserAppointmentStarted(
+      filter,
+    );
+  }
+
   _AppointmentItemReceived appointmentItemReceived(
       Either<ValueFailure, List<Appointment>> failureOrItems) {
     return _AppointmentItemReceived(
+      failureOrItems,
+    );
+  }
+
+  _UserAppointmentItemReceived userAppointmentItemReceived(
+      Either<ValueFailure, List<Appointment>> failureOrItems) {
+    return _UserAppointmentItemReceived(
       failureOrItems,
     );
   }
@@ -38,16 +52,23 @@ mixin _$AppointmentEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? filter) watchAllAppointmentStarted,
+    required TResult Function(String? filter) watchAllUserAppointmentStarted,
     required TResult Function(
             Either<ValueFailure, List<Appointment>> failureOrItems)
         appointmentItemReceived,
+    required TResult Function(
+            Either<ValueFailure, List<Appointment>> failureOrItems)
+        userAppointmentItemReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? filter)? watchAllAppointmentStarted,
+    TResult Function(String? filter)? watchAllUserAppointmentStarted,
     TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
         appointmentItemReceived,
+    TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
+        userAppointmentItemReceived,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -55,15 +76,23 @@ mixin _$AppointmentEvent {
   TResult map<TResult extends Object?>({
     required TResult Function(_watchAllAppointmentStarted value)
         watchAllAppointmentStarted,
+    required TResult Function(_watchAllUserAppointmentStarted value)
+        watchAllUserAppointmentStarted,
     required TResult Function(_AppointmentItemReceived value)
         appointmentItemReceived,
+    required TResult Function(_UserAppointmentItemReceived value)
+        userAppointmentItemReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_watchAllAppointmentStarted value)?
         watchAllAppointmentStarted,
+    TResult Function(_watchAllUserAppointmentStarted value)?
+        watchAllUserAppointmentStarted,
     TResult Function(_AppointmentItemReceived value)? appointmentItemReceived,
+    TResult Function(_UserAppointmentItemReceived value)?
+        userAppointmentItemReceived,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -155,9 +184,13 @@ class _$_watchAllAppointmentStarted implements _watchAllAppointmentStarted {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? filter) watchAllAppointmentStarted,
+    required TResult Function(String? filter) watchAllUserAppointmentStarted,
     required TResult Function(
             Either<ValueFailure, List<Appointment>> failureOrItems)
         appointmentItemReceived,
+    required TResult Function(
+            Either<ValueFailure, List<Appointment>> failureOrItems)
+        userAppointmentItemReceived,
   }) {
     return watchAllAppointmentStarted(filter);
   }
@@ -166,8 +199,11 @@ class _$_watchAllAppointmentStarted implements _watchAllAppointmentStarted {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? filter)? watchAllAppointmentStarted,
+    TResult Function(String? filter)? watchAllUserAppointmentStarted,
     TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
         appointmentItemReceived,
+    TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
+        userAppointmentItemReceived,
     required TResult orElse(),
   }) {
     if (watchAllAppointmentStarted != null) {
@@ -181,8 +217,12 @@ class _$_watchAllAppointmentStarted implements _watchAllAppointmentStarted {
   TResult map<TResult extends Object?>({
     required TResult Function(_watchAllAppointmentStarted value)
         watchAllAppointmentStarted,
+    required TResult Function(_watchAllUserAppointmentStarted value)
+        watchAllUserAppointmentStarted,
     required TResult Function(_AppointmentItemReceived value)
         appointmentItemReceived,
+    required TResult Function(_UserAppointmentItemReceived value)
+        userAppointmentItemReceived,
   }) {
     return watchAllAppointmentStarted(this);
   }
@@ -192,7 +232,11 @@ class _$_watchAllAppointmentStarted implements _watchAllAppointmentStarted {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_watchAllAppointmentStarted value)?
         watchAllAppointmentStarted,
+    TResult Function(_watchAllUserAppointmentStarted value)?
+        watchAllUserAppointmentStarted,
     TResult Function(_AppointmentItemReceived value)? appointmentItemReceived,
+    TResult Function(_UserAppointmentItemReceived value)?
+        userAppointmentItemReceived,
     required TResult orElse(),
   }) {
     if (watchAllAppointmentStarted != null) {
@@ -209,6 +253,149 @@ abstract class _watchAllAppointmentStarted implements AppointmentEvent {
   String? get filter => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
   _$watchAllAppointmentStartedCopyWith<_watchAllAppointmentStarted>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$watchAllUserAppointmentStartedCopyWith<$Res> {
+  factory _$watchAllUserAppointmentStartedCopyWith(
+          _watchAllUserAppointmentStarted value,
+          $Res Function(_watchAllUserAppointmentStarted) then) =
+      __$watchAllUserAppointmentStartedCopyWithImpl<$Res>;
+  $Res call({String? filter});
+}
+
+/// @nodoc
+class __$watchAllUserAppointmentStartedCopyWithImpl<$Res>
+    extends _$AppointmentEventCopyWithImpl<$Res>
+    implements _$watchAllUserAppointmentStartedCopyWith<$Res> {
+  __$watchAllUserAppointmentStartedCopyWithImpl(
+      _watchAllUserAppointmentStarted _value,
+      $Res Function(_watchAllUserAppointmentStarted) _then)
+      : super(_value, (v) => _then(v as _watchAllUserAppointmentStarted));
+
+  @override
+  _watchAllUserAppointmentStarted get _value =>
+      super._value as _watchAllUserAppointmentStarted;
+
+  @override
+  $Res call({
+    Object? filter = freezed,
+  }) {
+    return _then(_watchAllUserAppointmentStarted(
+      filter == freezed
+          ? _value.filter
+          : filter // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_watchAllUserAppointmentStarted
+    implements _watchAllUserAppointmentStarted {
+  const _$_watchAllUserAppointmentStarted(this.filter);
+
+  @override
+  final String? filter;
+
+  @override
+  String toString() {
+    return 'AppointmentEvent.watchAllUserAppointmentStarted(filter: $filter)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _watchAllUserAppointmentStarted &&
+            (identical(other.filter, filter) ||
+                const DeepCollectionEquality().equals(other.filter, filter)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(filter);
+
+  @JsonKey(ignore: true)
+  @override
+  _$watchAllUserAppointmentStartedCopyWith<_watchAllUserAppointmentStarted>
+      get copyWith => __$watchAllUserAppointmentStartedCopyWithImpl<
+          _watchAllUserAppointmentStarted>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? filter) watchAllAppointmentStarted,
+    required TResult Function(String? filter) watchAllUserAppointmentStarted,
+    required TResult Function(
+            Either<ValueFailure, List<Appointment>> failureOrItems)
+        appointmentItemReceived,
+    required TResult Function(
+            Either<ValueFailure, List<Appointment>> failureOrItems)
+        userAppointmentItemReceived,
+  }) {
+    return watchAllUserAppointmentStarted(filter);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? filter)? watchAllAppointmentStarted,
+    TResult Function(String? filter)? watchAllUserAppointmentStarted,
+    TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
+        appointmentItemReceived,
+    TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
+        userAppointmentItemReceived,
+    required TResult orElse(),
+  }) {
+    if (watchAllUserAppointmentStarted != null) {
+      return watchAllUserAppointmentStarted(filter);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_watchAllAppointmentStarted value)
+        watchAllAppointmentStarted,
+    required TResult Function(_watchAllUserAppointmentStarted value)
+        watchAllUserAppointmentStarted,
+    required TResult Function(_AppointmentItemReceived value)
+        appointmentItemReceived,
+    required TResult Function(_UserAppointmentItemReceived value)
+        userAppointmentItemReceived,
+  }) {
+    return watchAllUserAppointmentStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_watchAllAppointmentStarted value)?
+        watchAllAppointmentStarted,
+    TResult Function(_watchAllUserAppointmentStarted value)?
+        watchAllUserAppointmentStarted,
+    TResult Function(_AppointmentItemReceived value)? appointmentItemReceived,
+    TResult Function(_UserAppointmentItemReceived value)?
+        userAppointmentItemReceived,
+    required TResult orElse(),
+  }) {
+    if (watchAllUserAppointmentStarted != null) {
+      return watchAllUserAppointmentStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _watchAllUserAppointmentStarted implements AppointmentEvent {
+  const factory _watchAllUserAppointmentStarted(String? filter) =
+      _$_watchAllUserAppointmentStarted;
+
+  String? get filter => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$watchAllUserAppointmentStartedCopyWith<_watchAllUserAppointmentStarted>
       get copyWith => throw _privateConstructorUsedError;
 }
 
@@ -282,9 +469,13 @@ class _$_AppointmentItemReceived implements _AppointmentItemReceived {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(String? filter) watchAllAppointmentStarted,
+    required TResult Function(String? filter) watchAllUserAppointmentStarted,
     required TResult Function(
             Either<ValueFailure, List<Appointment>> failureOrItems)
         appointmentItemReceived,
+    required TResult Function(
+            Either<ValueFailure, List<Appointment>> failureOrItems)
+        userAppointmentItemReceived,
   }) {
     return appointmentItemReceived(failureOrItems);
   }
@@ -293,8 +484,11 @@ class _$_AppointmentItemReceived implements _AppointmentItemReceived {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function(String? filter)? watchAllAppointmentStarted,
+    TResult Function(String? filter)? watchAllUserAppointmentStarted,
     TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
         appointmentItemReceived,
+    TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
+        userAppointmentItemReceived,
     required TResult orElse(),
   }) {
     if (appointmentItemReceived != null) {
@@ -308,8 +502,12 @@ class _$_AppointmentItemReceived implements _AppointmentItemReceived {
   TResult map<TResult extends Object?>({
     required TResult Function(_watchAllAppointmentStarted value)
         watchAllAppointmentStarted,
+    required TResult Function(_watchAllUserAppointmentStarted value)
+        watchAllUserAppointmentStarted,
     required TResult Function(_AppointmentItemReceived value)
         appointmentItemReceived,
+    required TResult Function(_UserAppointmentItemReceived value)
+        userAppointmentItemReceived,
   }) {
     return appointmentItemReceived(this);
   }
@@ -319,7 +517,11 @@ class _$_AppointmentItemReceived implements _AppointmentItemReceived {
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_watchAllAppointmentStarted value)?
         watchAllAppointmentStarted,
+    TResult Function(_watchAllUserAppointmentStarted value)?
+        watchAllUserAppointmentStarted,
     TResult Function(_AppointmentItemReceived value)? appointmentItemReceived,
+    TResult Function(_UserAppointmentItemReceived value)?
+        userAppointmentItemReceived,
     required TResult orElse(),
   }) {
     if (appointmentItemReceived != null) {
@@ -339,6 +541,152 @@ abstract class _AppointmentItemReceived implements AppointmentEvent {
   @JsonKey(ignore: true)
   _$AppointmentItemReceivedCopyWith<_AppointmentItemReceived> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$UserAppointmentItemReceivedCopyWith<$Res> {
+  factory _$UserAppointmentItemReceivedCopyWith(
+          _UserAppointmentItemReceived value,
+          $Res Function(_UserAppointmentItemReceived) then) =
+      __$UserAppointmentItemReceivedCopyWithImpl<$Res>;
+  $Res call({Either<ValueFailure, List<Appointment>> failureOrItems});
+}
+
+/// @nodoc
+class __$UserAppointmentItemReceivedCopyWithImpl<$Res>
+    extends _$AppointmentEventCopyWithImpl<$Res>
+    implements _$UserAppointmentItemReceivedCopyWith<$Res> {
+  __$UserAppointmentItemReceivedCopyWithImpl(
+      _UserAppointmentItemReceived _value,
+      $Res Function(_UserAppointmentItemReceived) _then)
+      : super(_value, (v) => _then(v as _UserAppointmentItemReceived));
+
+  @override
+  _UserAppointmentItemReceived get _value =>
+      super._value as _UserAppointmentItemReceived;
+
+  @override
+  $Res call({
+    Object? failureOrItems = freezed,
+  }) {
+    return _then(_UserAppointmentItemReceived(
+      failureOrItems == freezed
+          ? _value.failureOrItems
+          : failureOrItems // ignore: cast_nullable_to_non_nullable
+              as Either<ValueFailure, List<Appointment>>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$_UserAppointmentItemReceived implements _UserAppointmentItemReceived {
+  const _$_UserAppointmentItemReceived(this.failureOrItems);
+
+  @override
+  final Either<ValueFailure, List<Appointment>> failureOrItems;
+
+  @override
+  String toString() {
+    return 'AppointmentEvent.userAppointmentItemReceived(failureOrItems: $failureOrItems)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _UserAppointmentItemReceived &&
+            (identical(other.failureOrItems, failureOrItems) ||
+                const DeepCollectionEquality()
+                    .equals(other.failureOrItems, failureOrItems)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(failureOrItems);
+
+  @JsonKey(ignore: true)
+  @override
+  _$UserAppointmentItemReceivedCopyWith<_UserAppointmentItemReceived>
+      get copyWith => __$UserAppointmentItemReceivedCopyWithImpl<
+          _UserAppointmentItemReceived>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(String? filter) watchAllAppointmentStarted,
+    required TResult Function(String? filter) watchAllUserAppointmentStarted,
+    required TResult Function(
+            Either<ValueFailure, List<Appointment>> failureOrItems)
+        appointmentItemReceived,
+    required TResult Function(
+            Either<ValueFailure, List<Appointment>> failureOrItems)
+        userAppointmentItemReceived,
+  }) {
+    return userAppointmentItemReceived(failureOrItems);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(String? filter)? watchAllAppointmentStarted,
+    TResult Function(String? filter)? watchAllUserAppointmentStarted,
+    TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
+        appointmentItemReceived,
+    TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
+        userAppointmentItemReceived,
+    required TResult orElse(),
+  }) {
+    if (userAppointmentItemReceived != null) {
+      return userAppointmentItemReceived(failureOrItems);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_watchAllAppointmentStarted value)
+        watchAllAppointmentStarted,
+    required TResult Function(_watchAllUserAppointmentStarted value)
+        watchAllUserAppointmentStarted,
+    required TResult Function(_AppointmentItemReceived value)
+        appointmentItemReceived,
+    required TResult Function(_UserAppointmentItemReceived value)
+        userAppointmentItemReceived,
+  }) {
+    return userAppointmentItemReceived(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_watchAllAppointmentStarted value)?
+        watchAllAppointmentStarted,
+    TResult Function(_watchAllUserAppointmentStarted value)?
+        watchAllUserAppointmentStarted,
+    TResult Function(_AppointmentItemReceived value)? appointmentItemReceived,
+    TResult Function(_UserAppointmentItemReceived value)?
+        userAppointmentItemReceived,
+    required TResult orElse(),
+  }) {
+    if (userAppointmentItemReceived != null) {
+      return userAppointmentItemReceived(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _UserAppointmentItemReceived implements AppointmentEvent {
+  const factory _UserAppointmentItemReceived(
+          Either<ValueFailure, List<Appointment>> failureOrItems) =
+      _$_UserAppointmentItemReceived;
+
+  Either<ValueFailure, List<Appointment>> get failureOrItems =>
+      throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  _$UserAppointmentItemReceivedCopyWith<_UserAppointmentItemReceived>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc

@@ -1,8 +1,14 @@
+import 'package:doctor_appointment/application/auth/auth_bloc.dart';
+import 'package:doctor_appointment/domain/utils/user_type.dart';
+import 'package:doctor_appointment/presentation/doctor/doctor_home.dart';
 import 'package:doctor_appointment/presentation/pages/authentication/signin/components/background.dart';
 import 'package:doctor_appointment/presentation/bottom_nav_bar.dart';
 import 'package:doctor_appointment/presentation/constants.dart';
+import 'package:doctor_appointment/presentation/pages/authentication/signin/login_screen.dart';
+import 'package:doctor_appointment/presentation/pages/authentication/signup/signup_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 
 class Body extends StatelessWidget {
@@ -12,7 +18,48 @@ class Body extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+         state.map(
+            initial: (_){},
+            authenticated: (authData){
+              switch(authData.profile.type){
+                case UserType.doctor:
+                  Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context)=> DoctorHome()),
+                  );
+                  break;
+                case UserType.admin:
+                // TODO: Handle this case.
+                  break;
+                case UserType.user:
+                  Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context)=> BottomNavBar()),
+                  );
+                  break;
+                default:
+                  Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context)=> LoginScreen()),
+                  );
+                  break;
+              }
+            },
+            unauthenticated: (_)=>_UnAuthenticatedPage());
+      },
+      child: _UnAuthenticatedPage(),
+    );
+  }
+}
+
+class _UnAuthenticatedPage extends StatelessWidget {
+  String email = "";
+  String password = "";
+
+  @override
+  Widget build(BuildContext context) {
+    Size size = MediaQuery
+        .of(context)
+        .size;
     return Background(
       child: SingleChildScrollView(
         child: Column(
@@ -44,7 +91,10 @@ class Body extends StatelessWidget {
                   decoration: kBoxDecorationStyle,
                   height: 60.0,
                   width: 320,
-                  child: const TextField(
+                  child: TextField(
+                    onChanged: (value){
+                      email = value;
+                    },
                     keyboardType: TextInputType.emailAddress,
                     style: TextStyle(
                       color: Colors.white,
@@ -80,7 +130,10 @@ class Body extends StatelessWidget {
                   decoration: kBoxDecorationStyle,
                   height: 60.0,
                   width: 320,
-                  child: const TextField(
+                  child: TextField(
+                    onChanged: (value){
+                      password = value;
+                    },
                     obscureText: true,
                     style: TextStyle(
                       color: Colors.white,
@@ -113,14 +166,31 @@ class Body extends StatelessWidget {
                   ),
                 ),
                 onPressed: () {
+                  context.read<AuthBloc>()..add(AuthEvent.loginWithEmailPass(email: email, password: password));
+                },
+                child: Text('LOGIN'),
+              ),
+            ),
+            Container(
+              width: 250,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue[800],
+                  elevation: 5.0,
+                  padding: const EdgeInsets.all(15.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                ),
+                onPressed: () {
                   HapticFeedback.vibrate();
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => BottomNavBar()),
-                    (Route<dynamic> route) => false,
+                    MaterialPageRoute(builder: (context) => SignUpScreen()),
+                        (Route<dynamic> route) => false,
                   );
                 },
-                child: Text('LOGIN'),
+                child: Text('Register Account?'),
               ),
             ),
           ],
@@ -129,3 +199,4 @@ class Body extends StatelessWidget {
     );
   }
 }
+

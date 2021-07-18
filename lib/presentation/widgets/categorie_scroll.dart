@@ -25,7 +25,7 @@ class CategoriesScroll extends StatelessWidget {
       onTap: () => _function(this.cardTitle),
       splashColor: Colors.black12,
       child: Container(
-        width: 100,
+        width: 110,
         decoration: BoxDecoration(
           color: baseColor,
           borderRadius: BorderRadius.circular(10.0),

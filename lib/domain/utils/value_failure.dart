@@ -10,3 +10,4 @@ class ValueFailure with _$ValueFailure {
   const factory ValueFailure.invalidFileFormat() = _InvalidFileFormat;
   const factory ValueFailure.unableToUpdate() = _UnableToUpdate;
 }
+

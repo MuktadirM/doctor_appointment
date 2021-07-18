@@ -28,3 +28,4 @@ class InvalidEmailAndPasswordCombination extends AuthFailureException {
   final String message;
   const InvalidEmailAndPasswordCombination(this.message) : super._();
 }
+

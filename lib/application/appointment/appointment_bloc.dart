@@ -20,6 +20,9 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
   late StreamSubscription<Either<ValueFailure, List<Appointment>>>
   _appointmentStreamSubscription;
 
+  late StreamSubscription<Either<ValueFailure, List<Appointment>>>
+  _userAppointmentStreamSubscription;
+
   @override
   Stream<AppointmentState> mapEventToState(
     AppointmentEvent event,
@@ -30,11 +33,18 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
           _appointmentStreamSubscription = _services.watchAll().listen(
                   (successOrFailure) => add(AppointmentEvent.appointmentItemReceived(successOrFailure)));
         },
-
+        watchAllUserAppointmentStarted: (e) async*{
+          _userAppointmentStreamSubscription = _services.watchUserAll().listen(
+                  (successOrFailure) => add(AppointmentEvent.userAppointmentItemReceived(successOrFailure)));
+        },
         appointmentItemReceived: (_AppointmentItemReceived value) async* {
           final data = value.failureOrItems;
           yield data.fold((l) => _LoadFailure(l), (r) => _LoadSuccess(r));
         },
+      userAppointmentItemReceived: (_UserAppointmentItemReceived value) async* {
+        final data = value.failureOrItems;
+        yield data.fold((l) => _LoadFailure(l), (r) => _LoadSuccess(r));
+      },
     );
 
   }
@@ -42,6 +52,7 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
   @override
   Future<void> close() async {
     await _appointmentStreamSubscription.cancel();
+    await _userAppointmentStreamSubscription.cancel();
     return super.close();
   }
 }

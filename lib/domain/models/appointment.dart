@@ -6,18 +6,23 @@ import 'package:doctor_appointment/domain/models/users/user.dart';
 
 class Appointment extends DomainObject {
   final Doctor? doctor;
-  final User? user;
-  final DateTime dateTime;
+  UserApp? user;
+  String? key;
+  DateTime dateTime;
+  DateTime? createdAt;
+  String? createdBy;
+  DateTime? updatedAt;
+  DateTime? deletedAt;
 
   Appointment({
-    required this.doctor,
-    required this.user,
+    this.doctor,
+    this.user,
     required this.dateTime,
-    String? key,
-    DateTime? createdAt,
-    String? createdBy,
-    DateTime? updatedAt,
-    DateTime? deletedAt,
+    this.key,
+    this.createdAt,
+    this.createdBy,
+    this.updatedAt,
+    this.deletedAt,
   }) : super(
           key: key,
           createdAt: createdAt,
@@ -27,7 +32,7 @@ class Appointment extends DomainObject {
         );
   Appointment copyWith({
     Doctor? doctor,
-    User? user,
+    UserApp? user,
     DateTime? dateTime,
     String? key,
     DateTime? createdAt,
@@ -63,14 +68,14 @@ class Appointment extends DomainObject {
   factory Appointment.fromMap(Map<String, dynamic> map) {
     return Appointment(
       doctor: Doctor.fromMap(map['doctor']),
-      user: User.fromMap(map['user']),
+      user: UserApp.fromMap(map['user']),
       dateTime: DateTime.fromMillisecondsSinceEpoch(map['dateTime']),
-      key: map['key'].toString(),
-      createdAt: DateTime.parse(map['createdAt']),
-      createdBy: map['createdBy'].toString(),
-      updatedAt: DateTime.parse(map['updatedAt']),
+      key: map['key'],
+      createdAt: map['createdAt'].toDate(),
+      createdBy: map['createdBy'],
+      updatedAt: map['updatedAt'].toDate(),
       deletedAt:
-          map['deletedAt'] == null ? null : DateTime.parse(map['deletedAt']),
+          map['deletedAt'] == null ? null : map['deletedAt'].toDate(),
     );
   }
 

@@ -33,6 +33,7 @@ class Profile extends DomainObject {
     String? name,
     String? email,
     UserType? type,
+    String ? image,
     String? phone,
     String? key,
     DateTime? createdAt,
@@ -45,6 +46,7 @@ class Profile extends DomainObject {
       email: email ?? this.email,
       type: type ?? this.type,
       phone: phone ?? this.phone,
+      image: image ?? this.image,
     );
   }
 
@@ -53,7 +55,13 @@ class Profile extends DomainObject {
       'name': name,
       'email': email,
       'type': enumTypeToString(type),
+      'image' : image,
       'phone': phone,
+      'key': key,
+      'createdAt': createdAt,
+      'createdBy': createdBy,
+      'updatedAt': updatedAt,
+      'deletedAt': deletedAt,
     };
   }
 
@@ -63,10 +71,11 @@ class Profile extends DomainObject {
       email: map['email'],
       type: enumTypeFromString(map['type']),
       phone: map['phone'],
-      key: map['key'] as String,
-      createdAt: DateTime.parse(map['createdAt']),
+      image: map['image'],
+      key: map['key'],
+      createdAt: map['createdAt'].toDate(),
       createdBy: map['createdBy'].toString(),
-      updatedAt: DateTime.parse(map['updatedAt']),
+      updatedAt: map['updatedAt'].toDate(),
       deletedAt:
           map['deletedAt'] == null ? null : DateTime.parse(map['deletedAt']),
     );

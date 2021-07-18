@@ -21,19 +21,19 @@ class HomeScreen extends StatelessWidget {
           const SizedBox(
             height: 30,
           ),
-          Text(
-            'Search',
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 22,
-              fontWeight: FontWeight.w300,
-            ),
-          ),
+          // Text(
+          //   'Search',
+          //   style: TextStyle(
+          //     color: Colors.grey,
+          //     fontSize: 22,
+          //     fontWeight: FontWeight.w300,
+          //   ),
+          // ),
           const SizedBox(
             height: 10,
           ),
           Text(
-            'Doctor Right Now',
+            'The Doctor Available Right Now',
             style: TextStyle(
               color: Colors.grey[700],
               fontSize: 25,
@@ -43,41 +43,41 @@ class HomeScreen extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          Center(
-            child: Container(
-              alignment: Alignment.centerLeft,
-              decoration: BoxDecoration(
-                color: Colors.blue[300],
-                borderRadius: BorderRadius.circular(10.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.blue.shade100,
-                    blurRadius: 15.0,
-                    offset: Offset(5, 8),
-                  ),
-                ],
-              ),
-              height: 60.0,
-              width: 370,
-              child: const TextField(
-                keyboardType: TextInputType.text,
-                style: TextStyle(
-                  color: Colors.white,
-                  fontFamily: 'OpenSans',
-                ),
-                decoration: InputDecoration(
-                  border: InputBorder.none,
-                  contentPadding: EdgeInsets.only(top: 14.0),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: Colors.white,
-                  ),
-                  hintText: 'Search here',
-                  hintStyle: kHintTextStyle,
-                ),
-              ),
-            ),
-          ),
+          // Center(
+          //   child: Container(
+          //     alignment: Alignment.centerLeft,
+          //     decoration: BoxDecoration(
+          //       color: Colors.blue[300],
+          //       borderRadius: BorderRadius.circular(10.0),
+          //       boxShadow: [
+          //         BoxShadow(
+          //           color: Colors.blue.shade100,
+          //           blurRadius: 15.0,
+          //           offset: Offset(5, 8),
+          //         ),
+          //       ],
+          //     ),
+          //     height: 60.0,
+          //     width: 370,
+          //     child: const TextField(
+          //       keyboardType: TextInputType.text,
+          //       style: TextStyle(
+          //         color: Colors.white,
+          //         fontFamily: 'OpenSans',
+          //       ),
+          //       decoration: InputDecoration(
+          //         border: InputBorder.none,
+          //         contentPadding: EdgeInsets.only(top: 14.0),
+          //         prefixIcon: Icon(
+          //           Icons.search,
+          //           color: Colors.white,
+          //         ),
+          //         hintText: 'Search here',
+          //         hintStyle: kHintTextStyle,
+          //       ),
+          //     ),
+          //   ),
+          // ),
           const SizedBox(
             height: 30,
           ),
