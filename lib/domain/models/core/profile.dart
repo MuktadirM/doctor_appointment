@@ -8,7 +8,7 @@ class Profile extends DomainObject {
   final String? email;
   final UserType type;
   final String? phone;
-  final String? image;
+  late String? image;
 
   Profile({
     required this.type,
@@ -47,6 +47,11 @@ class Profile extends DomainObject {
       type: type ?? this.type,
       phone: phone ?? this.phone,
       image: image ?? this.image,
+      key: key ?? this.key,
+      createdAt: createdAt ?? this.createdAt,
+      createdBy: createdBy ?? this.createdBy,
+      updatedAt: updatedAt ?? this.updatedAt,
+      deletedAt: deletedAt ?? this.deletedAt,
     );
   }
 

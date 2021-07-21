@@ -1,4 +1,6 @@
 part of 'edit_profile_bloc.dart';
 
-@immutable
-abstract class EditProfileEvent {}
+@freezed
+class EditProfileEvent with _$EditProfileEvent{
+  const factory EditProfileEvent.updateProfile(File? file, Profile profile) = _UpdateProfile;
+}

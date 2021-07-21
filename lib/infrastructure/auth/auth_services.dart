@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:doctor_appointment/domain/models/core/profile.dart';
@@ -8,8 +10,10 @@ import 'package:doctor_appointment/domain/utils/doctor_type.dart';
 import 'package:doctor_appointment/domain/utils/failures.dart';
 import 'package:doctor_appointment/domain/utils/register_failure.dart';
 import 'package:doctor_appointment/domain/utils/user_type.dart';
+import 'package:doctor_appointment/domain/utils/value_failure.dart';
 import 'package:doctor_appointment/infrastructure/unitls/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
 
@@ -17,8 +21,9 @@ import 'package:injectable/injectable.dart';
 class AuthServices implements IAuthServices {
   final FirebaseAuth _auth;
   final FirebaseFirestore _firestore;
+  final FirebaseStorage _storage;
 
-  AuthServices(this._auth, this._firestore);
+  AuthServices(this._auth, this._firestore,this._storage);
 
   @override
   Future<Either<AuthFailureException, Profile>> getLoginUser(String? key) {
@@ -157,6 +162,46 @@ class AuthServices implements IAuthServices {
       }
     }
     return left(const RegistrationFailure.serverError());
+  }
+
+  @override
+  Future<Either<ValueFailure, Unit>> updateProfile({File? file, required Profile profile}) async {
+    final storage = _storage.ref().child(USER_PATH);
+    profile.updatedAt = DateTime.now();
+    try{
+      if(file != null){
+        final originalFile = file.path.split("/").last;
+        final fileName =
+            DateTime.now().microsecondsSinceEpoch.toString() + '_' + originalFile;
+        final storageRef = storage.child(fileName);
+        final uploadTask = storageRef.putFile(file);
+        final TaskSnapshot downloadUrl = (await uploadTask);
+        final String url = await downloadUrl.ref.getDownloadURL();
+        profile.image = url;
+        if(await profileToStore(profile)){
+          if(await profileToStore(profile)){
+            return right(unit);
+          } else return left(ValueFailure.unableToUpdate());
+        }
+      } else {
+        if(await profileToStore(profile)){
+          return right(unit);
+        } else return left(ValueFailure.unableToUpdate());
+      }
+    } on PlatformException catch(ex){
+      return left(ValueFailure.unableToUpdate());
+    }
+    return left(ValueFailure.unableToUpdate());
+  }
+
+  Future<bool> profileToStore(Profile profile) async {
+    final ref = _firestore.collection(USER_PATH);
+    try{
+      await ref.doc(profile.key).set(profile.toMap(),SetOptions(merge: true));
+      return true;
+    } on PlatformException catch(ex){
+      return false;
+    }
   }
 
 }

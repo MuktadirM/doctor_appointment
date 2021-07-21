@@ -2,6 +2,7 @@ import 'dart:collection';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dartz/dartz_unsafe.dart';
 import 'package:doctor_appointment/domain/models/appointment.dart';
 import 'package:doctor_appointment/domain/models/users/user.dart';
 import 'package:doctor_appointment/domain/services/i_appointment_services.dart';
@@ -88,9 +89,21 @@ class AppointmentServices implements IAppointmentServices{
   }
 
   @override
-  Stream<Either<ValueFailure, List<Appointment>>> watchAll() {
+  Stream<Either<ValueFailure, List<Appointment>>> watchAll() async* {
     var ref = _firestore.collection(APPOINTMENT_PATH);
-    throw UnimplementedError();
+    try {
+      final userId = _auth.currentUser!.uid;
+          List<Appointment> list = [];
+          final snap = await ref.doc(userId).get();
+          snap.data()!.forEach((key, value){
+            for(var data in value){
+              list.add(Appointment.fromMap(data));
+            }
+          });
+          yield right(list);
+    } on PlatformException catch(ex){
+      yield left(const ValueFailure.unexpected());
+    }
   }
 
   @override

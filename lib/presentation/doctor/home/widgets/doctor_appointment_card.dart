@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 
 class DoctorAppointmentCard extends StatelessWidget {
   final Function callback;
-  final Appointment? appointment;
+  final Appointment appointment;
 
-  const DoctorAppointmentCard({required this.callback, this.appointment, Key? key}) : super(key: key);
+  const DoctorAppointmentCard({required this.callback,required this.appointment, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +15,15 @@ class DoctorAppointmentCard extends StatelessWidget {
       child: ListTile(
         tileColor: Colors.white70,
         leading: CircleAvatar(
-          child: Text('B'),
+          child: Image.network(appointment.user!.image!),
         ),
-        title: Text('Ekowan Sanjik'),
-        subtitle: Text('12pm'),
-        trailing: Text('12-07-2021'),
+        title: Text(appointment.user!.name!),
+        subtitle: Text(morningOrEventing(appointment.dateTime.hour)),
+        trailing: Text(dateCal(appointment.createdAt!)),
         onTap: ()=> callback(),
       ),
     );
   }
+  morningOrEventing(int hour) => hour < 12?'At morning $hour':'After at $hour lunch';
+  dateCal(DateTime timeStamp) => timeStamp.day.toString()+'-'+timeStamp.month.toString()+'-'+timeStamp.year.toString();
 }

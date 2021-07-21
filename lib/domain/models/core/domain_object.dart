@@ -3,8 +3,8 @@ import 'dart:convert';
 class DomainObject {
   final String? key;
   final DateTime? createdAt;
-  final String? createdBy;
-  final DateTime? updatedAt;
+  late String? createdBy;
+  late DateTime? updatedAt;
   final DateTime? deletedAt;
 
   DomainObject({

@@ -25,10 +25,12 @@ class _DoctorHomeState extends State<DoctorHome> {
     HapticFeedback.vibrate();
     setState(() {
       _selectedIndex = index;
-      if(_selectedIndex == 1){
-        title = "Blog";
-      }else{
+      if(_selectedIndex == 0){
         title = "Appointments";
+      }else if(_selectedIndex == 1){
+        title = "Blog";
+      } else {
+        title = "Profile";
       }
     });
   }

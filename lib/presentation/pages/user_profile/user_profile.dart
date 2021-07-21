@@ -1,8 +1,7 @@
 import 'package:doctor_appointment/application/auth/auth_bloc.dart';
 import 'package:doctor_appointment/domain/models/core/profile.dart';
-import 'package:doctor_appointment/domain/utils/user_type.dart';
-import 'package:doctor_appointment/injection.dart';
 import 'package:doctor_appointment/presentation/pages/authentication/signin/login_screen.dart';
+import 'package:doctor_appointment/presentation/pages/user_profile/edit_profile.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,19 +19,22 @@ class UserProfile extends StatelessWidget {
               initial: (_) {},
               authenticated: (data) {},
               unauthenticated: (_) {
-                Navigator.pushAndRemoveUntil(context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()),
-                      (_) => false,
+                Navigator.pushAndRemoveUntil(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginScreen()),
+                  (_) => false,
                 );
               },
             );
           },
           child: BlocBuilder<AuthBloc, AuthState>(
             builder: (context, state) {
-              return state.when(initial: ()=> _Initial(),
-                  authenticated: (data) => _AuthUserDataView(profile: data,),
-                  unauthenticated: ()=> _UnAuth()
-              );
+              return state.when(
+                  initial: () => _Initial(),
+                  authenticated: (data) => _AuthUserDataView(
+                        profile: data,
+                      ),
+                  unauthenticated: () => _UnAuth());
             },
           ),
         ),
@@ -52,10 +54,10 @@ class _UnAuth extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CircularProgressIndicator(),
-            SizedBox(height: 10,),
-            Text(
-                'Logout processing....'
+            SizedBox(
+              height: 10,
             ),
+            Text('Logout processing....'),
           ],
         ),
       ),
@@ -69,13 +71,10 @@ class _Initial extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Text(
-          'Initial Value'
-      ),
+      child: Text('Initial Value'),
     );
   }
 }
-
 
 class _AuthUserDataView extends StatelessWidget {
   final Profile profile;
@@ -116,42 +115,81 @@ class _AuthUserDataView extends StatelessWidget {
         SizedBox(
           height: 10,
         ),
-        _TextRow(
-          icon: Icons.person,
-          title: 'Ekowan hasan',
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        _TextRow(
-          icon: Icons.timer,
-          title: 'Created : ' + '23 june 2021',
-        ),
-        SizedBox(
-          height: 10,
-        ),
-        Container(
-          width: 250,
-          child: ElevatedButton(
-            style: ElevatedButton.styleFrom(
-              primary: Colors.blue[800],
-              elevation: 5.0,
-              padding: const EdgeInsets.all(15.0),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30.0),
-              ),
-            ),
-            onPressed: () {
-              context.read<AuthBloc>()
-                ..add(AuthEvent.signedOut());
-            },
-            child: Text('Logout'),
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: _TextRow(
+            icon: Icons.person,
+            title: 'Ekowan hasan',
           ),
         ),
+        SizedBox(
+          height: 10,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 10),
+          child: _TextRow(
+            icon: Icons.timer,
+            title: 'Created : ' + '23 june 2021',
+          ),
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 300,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue[800],
+                  elevation: 5.0,
+                  padding: const EdgeInsets.all(15.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                ),
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EditProfile(profile),
+                    ),
+                  );
+                },
+                child: Text('Edit Profile'),
+              ),
+            ),
+          ],
+        ),
+        SizedBox(
+          height: 10,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: 300,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.blue[800],
+                  elevation: 5.0,
+                  padding: const EdgeInsets.all(15.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                ),
+                onPressed: () {
+                  context.read<AuthBloc>()..add(AuthEvent.signedOut());
+                },
+                child: Text('Logout'),
+              ),
+            ),
+          ],
+        )
       ],
     );
   }
-
 }
 
 class _TextRow extends StatelessWidget {
