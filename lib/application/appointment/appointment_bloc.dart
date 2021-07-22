@@ -30,10 +30,17 @@ class AppointmentBloc extends Bloc<AppointmentEvent, AppointmentState> {
     yield* event.map(
         watchAllAppointmentStarted: (e) async* {
           yield const AppointmentState.loadInProgress();
+          _userAppointmentStreamSubscription = _services.watchUserAll().listen(
+                  (successOrFailure) => add(AppointmentEvent.userAppointmentItemReceived(successOrFailure)));
+
           _appointmentStreamSubscription = _services.watchAll().listen(
                   (successOrFailure) => add(AppointmentEvent.appointmentItemReceived(successOrFailure)));
+
         },
         watchAllUserAppointmentStarted: (e) async*{
+          _appointmentStreamSubscription = _services.watchAll().listen(
+                  (successOrFailure) => add(AppointmentEvent.appointmentItemReceived(successOrFailure)));
+
           _userAppointmentStreamSubscription = _services.watchUserAll().listen(
                   (successOrFailure) => add(AppointmentEvent.userAppointmentItemReceived(successOrFailure)));
         },

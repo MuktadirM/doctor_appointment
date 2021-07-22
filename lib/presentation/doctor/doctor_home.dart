@@ -3,6 +3,7 @@ import 'package:doctor_appointment/presentation/doctor/home/appointment.dart';
 import 'package:doctor_appointment/presentation/pages/user_profile/user_profile.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class DoctorHome extends StatefulWidget {
   const DoctorHome({Key? key}) : super(key: key);

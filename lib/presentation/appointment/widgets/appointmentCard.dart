@@ -5,6 +5,7 @@ class AppointmentCard extends StatelessWidget {
   final String docName;
   final String docTitle;
   final String visitingTime;
+  final DateTime datetime;
 
   const AppointmentCard({
     Key? key,
@@ -12,6 +13,7 @@ class AppointmentCard extends StatelessWidget {
     required this.docName,
     required this.docTitle,
     required this.visitingTime,
+    required this.datetime
   }) : super(key: key);
 
   @override
@@ -69,12 +71,20 @@ class AppointmentCard extends StatelessWidget {
               ],
             ),
             Divider(),
-            Text(
-              visitingTime,
-              style: TextStyle(
-                fontWeight: FontWeight.w300,
-              ),
-            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  visitingTime,
+                  style: TextStyle(
+                    fontWeight: FontWeight.w300,
+                  ),
+                ),
+                Container(
+                  child: datetime.day < DateTime.now().day?Icon(Icons.done,color: Colors.green,):Icon(Icons.done,color: Colors.yellow,),
+                )
+              ],
+            )
           ],
         ),
       ),

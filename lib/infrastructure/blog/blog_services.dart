@@ -21,33 +21,25 @@ class BlogServices implements IBlogServices {
   @override
   Future<Either<ValueFailure, Unit>> add(Blog entity) async {
     final ref = _firestore.collection(BLOG);
+    var refUser = _firestore.collection(USER_PATH);
+
     final key = ref.doc().id;
     final dateTime = DateTime.now();
-    final docImage = "https://firebasestorage.googleapis.com/v0/b/doctor-appointment-1f1a1.appspot.com/o/doctors%2Fmale_doc.jpg?alt=media&token=2fcaae1b-a28a-4740-8e50-7146c1d69d70";
-    final doctor = Doctor(
-      key: "skljgkldfdljgkldf",
-      name: 'Ekowan Sanjik',
-      image: docImage,
-      email: "ekowan@gmail.com",
-      docType: DoctorType.family,
-      type: UserType.doctor,
-      createdAt: dateTime,
-      updatedAt: dateTime,
-      createdBy: "iddfkdfjkg",
-      deletedAt: null,
-    );
-
-    final blog = Blog(
-      key: key,
-      title: entity.title,
-      description: entity.description,
-      doctor: doctor,
-      createdAt: dateTime,
-      updatedAt: dateTime,
-      createdBy: "iddfkdfjkg",
-      deletedAt: null,
-    );
     try {
+      final userId = _auth.currentUser!.uid;
+      final user = await refUser.doc(userId).get();
+      final doctor = Doctor.fromMap(user.data()!);
+      final blog = Blog(
+        key: key,
+        title: entity.title,
+        description: entity.description,
+        doctor: doctor,
+        createdAt: dateTime,
+        updatedAt: dateTime,
+        createdBy: userId,
+        deletedAt: null,
+      );
+
       await ref.doc(key).set(blog.toMap());
       return right(unit);
     } on PlatformException catch (ex) {

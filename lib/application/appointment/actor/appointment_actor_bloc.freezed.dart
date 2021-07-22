@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'edit_profile_bloc.dart';
+part of 'appointment_actor_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,179 +13,162 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$EditProfileEventTearOff {
-  const _$EditProfileEventTearOff();
+class _$AppointmentActorEventTearOff {
+  const _$AppointmentActorEventTearOff();
 
-  _UpdateProfile updateProfile(File? file, Profile profile) {
-    return _UpdateProfile(
-      file,
-      profile,
+  _CancelAppointment cancelAppointment(Appointment appointment) {
+    return _CancelAppointment(
+      appointment,
     );
   }
 }
 
 /// @nodoc
-const $EditProfileEvent = _$EditProfileEventTearOff();
+const $AppointmentActorEvent = _$AppointmentActorEventTearOff();
 
 /// @nodoc
-mixin _$EditProfileEvent {
-  File? get file => throw _privateConstructorUsedError;
-  Profile get profile => throw _privateConstructorUsedError;
+mixin _$AppointmentActorEvent {
+  Appointment get appointment => throw _privateConstructorUsedError;
 
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(File? file, Profile profile) updateProfile,
+    required TResult Function(Appointment appointment) cancelAppointment,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(File? file, Profile profile)? updateProfile,
+    TResult Function(Appointment appointment)? cancelAppointment,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UpdateProfile value) updateProfile,
+    required TResult Function(_CancelAppointment value) cancelAppointment,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UpdateProfile value)? updateProfile,
+    TResult Function(_CancelAppointment value)? cancelAppointment,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $EditProfileEventCopyWith<EditProfileEvent> get copyWith =>
+  $AppointmentActorEventCopyWith<AppointmentActorEvent> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EditProfileEventCopyWith<$Res> {
-  factory $EditProfileEventCopyWith(
-          EditProfileEvent value, $Res Function(EditProfileEvent) then) =
-      _$EditProfileEventCopyWithImpl<$Res>;
-  $Res call({File? file, Profile profile});
+abstract class $AppointmentActorEventCopyWith<$Res> {
+  factory $AppointmentActorEventCopyWith(AppointmentActorEvent value,
+          $Res Function(AppointmentActorEvent) then) =
+      _$AppointmentActorEventCopyWithImpl<$Res>;
+  $Res call({Appointment appointment});
 }
 
 /// @nodoc
-class _$EditProfileEventCopyWithImpl<$Res>
-    implements $EditProfileEventCopyWith<$Res> {
-  _$EditProfileEventCopyWithImpl(this._value, this._then);
+class _$AppointmentActorEventCopyWithImpl<$Res>
+    implements $AppointmentActorEventCopyWith<$Res> {
+  _$AppointmentActorEventCopyWithImpl(this._value, this._then);
 
-  final EditProfileEvent _value;
+  final AppointmentActorEvent _value;
   // ignore: unused_field
-  final $Res Function(EditProfileEvent) _then;
+  final $Res Function(AppointmentActorEvent) _then;
 
   @override
   $Res call({
-    Object? file = freezed,
-    Object? profile = freezed,
+    Object? appointment = freezed,
   }) {
     return _then(_value.copyWith(
-      file: file == freezed
-          ? _value.file
-          : file // ignore: cast_nullable_to_non_nullable
-              as File?,
-      profile: profile == freezed
-          ? _value.profile
-          : profile // ignore: cast_nullable_to_non_nullable
-              as Profile,
+      appointment: appointment == freezed
+          ? _value.appointment
+          : appointment // ignore: cast_nullable_to_non_nullable
+              as Appointment,
     ));
   }
 }
 
 /// @nodoc
-abstract class _$UpdateProfileCopyWith<$Res>
-    implements $EditProfileEventCopyWith<$Res> {
-  factory _$UpdateProfileCopyWith(
-          _UpdateProfile value, $Res Function(_UpdateProfile) then) =
-      __$UpdateProfileCopyWithImpl<$Res>;
+abstract class _$CancelAppointmentCopyWith<$Res>
+    implements $AppointmentActorEventCopyWith<$Res> {
+  factory _$CancelAppointmentCopyWith(
+          _CancelAppointment value, $Res Function(_CancelAppointment) then) =
+      __$CancelAppointmentCopyWithImpl<$Res>;
   @override
-  $Res call({File? file, Profile profile});
+  $Res call({Appointment appointment});
 }
 
 /// @nodoc
-class __$UpdateProfileCopyWithImpl<$Res>
-    extends _$EditProfileEventCopyWithImpl<$Res>
-    implements _$UpdateProfileCopyWith<$Res> {
-  __$UpdateProfileCopyWithImpl(
-      _UpdateProfile _value, $Res Function(_UpdateProfile) _then)
-      : super(_value, (v) => _then(v as _UpdateProfile));
+class __$CancelAppointmentCopyWithImpl<$Res>
+    extends _$AppointmentActorEventCopyWithImpl<$Res>
+    implements _$CancelAppointmentCopyWith<$Res> {
+  __$CancelAppointmentCopyWithImpl(
+      _CancelAppointment _value, $Res Function(_CancelAppointment) _then)
+      : super(_value, (v) => _then(v as _CancelAppointment));
 
   @override
-  _UpdateProfile get _value => super._value as _UpdateProfile;
+  _CancelAppointment get _value => super._value as _CancelAppointment;
 
   @override
   $Res call({
-    Object? file = freezed,
-    Object? profile = freezed,
+    Object? appointment = freezed,
   }) {
-    return _then(_UpdateProfile(
-      file == freezed
-          ? _value.file
-          : file // ignore: cast_nullable_to_non_nullable
-              as File?,
-      profile == freezed
-          ? _value.profile
-          : profile // ignore: cast_nullable_to_non_nullable
-              as Profile,
+    return _then(_CancelAppointment(
+      appointment == freezed
+          ? _value.appointment
+          : appointment // ignore: cast_nullable_to_non_nullable
+              as Appointment,
     ));
   }
 }
 
 /// @nodoc
 
-class _$_UpdateProfile implements _UpdateProfile {
-  const _$_UpdateProfile(this.file, this.profile);
+class _$_CancelAppointment implements _CancelAppointment {
+  const _$_CancelAppointment(this.appointment);
 
   @override
-  final File? file;
-  @override
-  final Profile profile;
+  final Appointment appointment;
 
   @override
   String toString() {
-    return 'EditProfileEvent.updateProfile(file: $file, profile: $profile)';
+    return 'AppointmentActorEvent.cancelAppointment(appointment: $appointment)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _UpdateProfile &&
-            (identical(other.file, file) ||
-                const DeepCollectionEquality().equals(other.file, file)) &&
-            (identical(other.profile, profile) ||
-                const DeepCollectionEquality().equals(other.profile, profile)));
+        (other is _CancelAppointment &&
+            (identical(other.appointment, appointment) ||
+                const DeepCollectionEquality()
+                    .equals(other.appointment, appointment)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^
-      const DeepCollectionEquality().hash(file) ^
-      const DeepCollectionEquality().hash(profile);
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(appointment);
 
   @JsonKey(ignore: true)
   @override
-  _$UpdateProfileCopyWith<_UpdateProfile> get copyWith =>
-      __$UpdateProfileCopyWithImpl<_UpdateProfile>(this, _$identity);
+  _$CancelAppointmentCopyWith<_CancelAppointment> get copyWith =>
+      __$CancelAppointmentCopyWithImpl<_CancelAppointment>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(File? file, Profile profile) updateProfile,
+    required TResult Function(Appointment appointment) cancelAppointment,
   }) {
-    return updateProfile(file, profile);
+    return cancelAppointment(appointment);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(File? file, Profile profile)? updateProfile,
+    TResult Function(Appointment appointment)? cancelAppointment,
     required TResult orElse(),
   }) {
-    if (updateProfile != null) {
-      return updateProfile(file, profile);
+    if (cancelAppointment != null) {
+      return cancelAppointment(appointment);
     }
     return orElse();
   }
@@ -193,40 +176,39 @@ class _$_UpdateProfile implements _UpdateProfile {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_UpdateProfile value) updateProfile,
+    required TResult Function(_CancelAppointment value) cancelAppointment,
   }) {
-    return updateProfile(this);
+    return cancelAppointment(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_UpdateProfile value)? updateProfile,
+    TResult Function(_CancelAppointment value)? cancelAppointment,
     required TResult orElse(),
   }) {
-    if (updateProfile != null) {
-      return updateProfile(this);
+    if (cancelAppointment != null) {
+      return cancelAppointment(this);
     }
     return orElse();
   }
 }
 
-abstract class _UpdateProfile implements EditProfileEvent {
-  const factory _UpdateProfile(File? file, Profile profile) = _$_UpdateProfile;
+abstract class _CancelAppointment implements AppointmentActorEvent {
+  const factory _CancelAppointment(Appointment appointment) =
+      _$_CancelAppointment;
 
   @override
-  File? get file => throw _privateConstructorUsedError;
-  @override
-  Profile get profile => throw _privateConstructorUsedError;
+  Appointment get appointment => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$UpdateProfileCopyWith<_UpdateProfile> get copyWith =>
+  _$CancelAppointmentCopyWith<_CancelAppointment> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$EditProfileStateTearOff {
-  const _$EditProfileStateTearOff();
+class _$AppointmentActorStateTearOff {
+  const _$AppointmentActorStateTearOff();
 
   _Initial initial() {
     return const _Initial();
@@ -248,10 +230,10 @@ class _$EditProfileStateTearOff {
 }
 
 /// @nodoc
-const $EditProfileState = _$EditProfileStateTearOff();
+const $AppointmentActorState = _$AppointmentActorStateTearOff();
 
 /// @nodoc
-mixin _$EditProfileState {
+mixin _$AppointmentActorState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -289,20 +271,20 @@ mixin _$EditProfileState {
 }
 
 /// @nodoc
-abstract class $EditProfileStateCopyWith<$Res> {
-  factory $EditProfileStateCopyWith(
-          EditProfileState value, $Res Function(EditProfileState) then) =
-      _$EditProfileStateCopyWithImpl<$Res>;
+abstract class $AppointmentActorStateCopyWith<$Res> {
+  factory $AppointmentActorStateCopyWith(AppointmentActorState value,
+          $Res Function(AppointmentActorState) then) =
+      _$AppointmentActorStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$EditProfileStateCopyWithImpl<$Res>
-    implements $EditProfileStateCopyWith<$Res> {
-  _$EditProfileStateCopyWithImpl(this._value, this._then);
+class _$AppointmentActorStateCopyWithImpl<$Res>
+    implements $AppointmentActorStateCopyWith<$Res> {
+  _$AppointmentActorStateCopyWithImpl(this._value, this._then);
 
-  final EditProfileState _value;
+  final AppointmentActorState _value;
   // ignore: unused_field
-  final $Res Function(EditProfileState) _then;
+  final $Res Function(AppointmentActorState) _then;
 }
 
 /// @nodoc
@@ -312,7 +294,8 @@ abstract class _$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$EditProfileStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res>
+    extends _$AppointmentActorStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -328,7 +311,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'EditProfileState.initial()';
+    return 'AppointmentActorState.initial()';
   }
 
   @override
@@ -392,7 +375,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements EditProfileState {
+abstract class _Initial implements AppointmentActorState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -405,7 +388,7 @@ abstract class _$ActionInProgressCopyWith<$Res> {
 
 /// @nodoc
 class __$ActionInProgressCopyWithImpl<$Res>
-    extends _$EditProfileStateCopyWithImpl<$Res>
+    extends _$AppointmentActorStateCopyWithImpl<$Res>
     implements _$ActionInProgressCopyWith<$Res> {
   __$ActionInProgressCopyWithImpl(
       _ActionInProgress _value, $Res Function(_ActionInProgress) _then)
@@ -422,7 +405,7 @@ class _$_ActionInProgress implements _ActionInProgress {
 
   @override
   String toString() {
-    return 'EditProfileState.actionInProgress()';
+    return 'AppointmentActorState.actionInProgress()';
   }
 
   @override
@@ -486,7 +469,7 @@ class _$_ActionInProgress implements _ActionInProgress {
   }
 }
 
-abstract class _ActionInProgress implements EditProfileState {
+abstract class _ActionInProgress implements AppointmentActorState {
   const factory _ActionInProgress() = _$_ActionInProgress;
 }
 
@@ -499,7 +482,7 @@ abstract class _$ActionSuccessCopyWith<$Res> {
 
 /// @nodoc
 class __$ActionSuccessCopyWithImpl<$Res>
-    extends _$EditProfileStateCopyWithImpl<$Res>
+    extends _$AppointmentActorStateCopyWithImpl<$Res>
     implements _$ActionSuccessCopyWith<$Res> {
   __$ActionSuccessCopyWithImpl(
       _ActionSuccess _value, $Res Function(_ActionSuccess) _then)
@@ -516,7 +499,7 @@ class _$_ActionSuccess implements _ActionSuccess {
 
   @override
   String toString() {
-    return 'EditProfileState.actionSuccess()';
+    return 'AppointmentActorState.actionSuccess()';
   }
 
   @override
@@ -580,7 +563,7 @@ class _$_ActionSuccess implements _ActionSuccess {
   }
 }
 
-abstract class _ActionSuccess implements EditProfileState {
+abstract class _ActionSuccess implements AppointmentActorState {
   const factory _ActionSuccess() = _$_ActionSuccess;
 }
 
@@ -596,7 +579,7 @@ abstract class _$ActionFailedCopyWith<$Res> {
 
 /// @nodoc
 class __$ActionFailedCopyWithImpl<$Res>
-    extends _$EditProfileStateCopyWithImpl<$Res>
+    extends _$AppointmentActorStateCopyWithImpl<$Res>
     implements _$ActionFailedCopyWith<$Res> {
   __$ActionFailedCopyWithImpl(
       _ActionFailed _value, $Res Function(_ActionFailed) _then)
@@ -635,7 +618,7 @@ class _$_ActionFailed implements _ActionFailed {
 
   @override
   String toString() {
-    return 'EditProfileState.actionFailed(failure: $failure)';
+    return 'AppointmentActorState.actionFailed(failure: $failure)';
   }
 
   @override
@@ -708,7 +691,7 @@ class _$_ActionFailed implements _ActionFailed {
   }
 }
 
-abstract class _ActionFailed implements EditProfileState {
+abstract class _ActionFailed implements AppointmentActorState {
   const factory _ActionFailed(ValueFailure failure) = _$_ActionFailed;
 
   ValueFailure get failure => throw _privateConstructorUsedError;

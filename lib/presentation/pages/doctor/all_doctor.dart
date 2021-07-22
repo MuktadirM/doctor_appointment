@@ -26,15 +26,33 @@ class AllDoctorView extends StatelessWidget {
             ..add(DoctorEvent.watchAllDoctorStarted(filter))),
           BlocProvider(create: (context) => getIt<AddAppointmentBloc>()),
         ],
-        child: BlocBuilder<DoctorBloc, DoctorState>(
-          builder: (context, state) {
-            return state.map(
-                initial: (_)=>_InitialPage(),
-                loadInProgress: (_)=>_InitialPage(),
-                loadSuccess: (data)=> _ListOfDoctor(data.items),
-                loadFailure: (data)=>_loadFailed(data.failure),
-            );
+        child: BlocListener<AddAppointmentBloc, AddAppointmentState>(
+          listener: (context, state) {
+            state.when(
+                initial: (){},
+                addInProgress: (){
+                  final snackBar = SnackBar(content: Text('Please wait...'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
+                addSuccess: (){
+                  final snackBar = SnackBar(content: Text('Appointment added'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
+                failToAdd: (failure){
+                  final snackBar = SnackBar(content: Text('Appointment can not add'));
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                }, );
           },
+          child: BlocBuilder<DoctorBloc, DoctorState>(
+            builder: (context, state) {
+              return state.map(
+                initial: (_) => _InitialPage(),
+                loadInProgress: (_) => _InitialPage(),
+                loadSuccess: (data) => _ListOfDoctor(data.items),
+                loadFailure: (data) => _loadFailed(data.failure),
+              );
+            },
+          ),
         ),
       ),
     );
@@ -42,11 +60,11 @@ class AllDoctorView extends StatelessWidget {
 
   _loadFailed(ValueFailure failure) {
     return failure.map(
-        unexpected:(_)=> _FailureData(),
-        insufficientPermission: (_)=> _FailureData(),
-        attachmentNotFound: (_)=> _FailureData(),
-        invalidFileFormat: (_)=> _FailureData(),
-        unableToUpdate: (_)=> _FailureData());
+        unexpected: (_) => _FailureData(),
+        insufficientPermission: (_) => _FailureData(),
+        attachmentNotFound: (_) => _FailureData(),
+        invalidFileFormat: (_) => _FailureData(),
+        unableToUpdate: (_) => _FailureData());
   }
 }
 
@@ -76,10 +94,10 @@ class _ListOfDoctor extends StatelessWidget {
         itemBuilder: (context, index) {
           return BlocListener<AddAppointmentBloc, AddAppointmentState>(
             listener: (context, state) {
-              state.map(initial: (_)=>{},
-                  addInProgress:  (_)=>{},
-                  addSuccess:  (_)=>{},
-                  failToAdd:  (_)=>{});
+              state.map(initial: (_) => {},
+                  addInProgress: (_) => {},
+                  addSuccess: (_) => {},
+                  failToAdd: (_) => {});
             },
             child: DoctorCardView(() {
               final appoint = Appointment(

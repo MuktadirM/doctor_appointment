@@ -2,6 +2,7 @@ import 'package:doctor_appointment/application/auth/auth_bloc.dart';
 import 'package:doctor_appointment/domain/models/core/profile.dart';
 import 'package:doctor_appointment/presentation/pages/authentication/signin/login_screen.dart';
 import 'package:doctor_appointment/presentation/pages/user_profile/edit_profile.dart';
+import 'package:doctor_appointment/presentation/utils/time_diff.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -119,7 +120,7 @@ class _AuthUserDataView extends StatelessWidget {
           padding: const EdgeInsets.only(left: 10),
           child: _TextRow(
             icon: Icons.person,
-            title: 'Ekowan hasan',
+            title: profile.name!,
           ),
         ),
         SizedBox(
@@ -129,7 +130,7 @@ class _AuthUserDataView extends StatelessWidget {
           padding: const EdgeInsets.only(left: 10),
           child: _TextRow(
             icon: Icons.timer,
-            title: 'Created : ' + '23 june 2021',
+            title: 'Created : ' + TimeDiffForHuman.convert(profile.createdAt.toString()),
           ),
         ),
         SizedBox(

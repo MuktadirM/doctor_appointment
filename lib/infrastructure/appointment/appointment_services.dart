@@ -2,7 +2,6 @@ import 'dart:collection';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
-import 'package:dartz/dartz_unsafe.dart';
 import 'package:doctor_appointment/domain/models/appointment.dart';
 import 'package:doctor_appointment/domain/models/users/user.dart';
 import 'package:doctor_appointment/domain/services/i_appointment_services.dart';
@@ -56,8 +55,8 @@ class AppointmentServices implements IAppointmentServices{
           final first = getTime(0);
           final time = firstAppointment.add( Duration(hours: first.hour,minutes: first.min));
           entity.dateTime = time;
-          Map<String,List<Appointment>> mapData = HashMap();
-          mapData[today] = [entity];
+          Map<String,List<dynamic>> mapData = HashMap();
+          mapData[today] = [entity.toMap()];
           ref.doc(entity.doctor!.key).set(mapData,SetOptions(merge: true));
           return right(unit);
         }
@@ -65,7 +64,7 @@ class AppointmentServices implements IAppointmentServices{
         final first = getTime(0);
         final time = firstAppointment.add( Duration(hours: first.hour,minutes: first.min));
         entity.dateTime = time.toLocal();
-        Map<String,List<Map<String,dynamic>>> mapData = HashMap();
+        Map<String,List<dynamic>> mapData = HashMap();
         mapData[today] = [entity.toMap()];
         ref.doc(entity.doctor!.key).set(mapData,SetOptions(merge: true));
         return right(unit);
@@ -128,9 +127,7 @@ class AppointmentServices implements IAppointmentServices{
     } on PlatformException catch (e){
       yield left(const ValueFailure.unexpected());
     }
-
   }
-
   AppointmentHour getTime(int size){
       switch(size){
         case 0:

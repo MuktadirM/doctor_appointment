@@ -2,6 +2,7 @@ import 'package:doctor_appointment/application/blog/blog_bloc.dart';
 import 'package:doctor_appointment/domain/models/core/blog.dart';
 import 'package:doctor_appointment/injection.dart';
 import 'package:doctor_appointment/presentation/doctor/blog/add_blog_post.dart';
+import 'package:doctor_appointment/presentation/doctor/blog/doctor_view_blog.dart';
 import 'package:doctor_appointment/presentation/doctor/blog/widgets/post_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,23 +16,13 @@ class DoctorBlogView extends StatefulWidget {
 }
 
 class _DoctorBlogViewState extends State<DoctorBlogView> {
+   bool initial = true;
   final List<Blog> posts = [];
-
   RefreshController _refreshController = RefreshController(initialRefresh: false);
-  void _onRefresh() {
-    if (mounted)
-      setState(() {
-        getIt<BlogBloc>()..add(const BlogEvent.watchAllBlogStarted(null));
-      });
-    _refreshController.refreshCompleted();
-  }
-
-  void _onLoading() {
-    _refreshController.loadComplete();
-  }
 
   @override
   Widget build(BuildContext context) {
+
     return BlocProvider(
         create: (context) =>
             getIt<BlogBloc>()..add(const BlogEvent.watchAllBlogStarted(null)),
@@ -43,8 +34,7 @@ class _DoctorBlogViewState extends State<DoctorBlogView> {
                     initial: (_)=>{},
                     loadInProgress: (_)=>{},
                     loadSuccess: (data){
-                      posts.clear();
-                      posts.addAll(data.items);
+
                     },
                     loadFailure: (fail)=>{}
                 );
@@ -58,11 +48,8 @@ class _DoctorBlogViewState extends State<DoctorBlogView> {
                     loadSuccess: (data) {
                       posts.clear();
                       posts.addAll(data.items);
-                      return _Successful(posts,_refreshController,()=>{
-                        _onRefresh()
-                      },()=>{
-                        _onLoading()
-                      });
+                      initial = false;
+                      return _Successful(posts,_refreshController);
                     },
                     loadFailure: (value) => _FailToLoad(
                       title: 'No data found',
@@ -91,10 +78,8 @@ class _Successful extends StatelessWidget {
   final title;
   final List<Blog> posts;
   final RefreshController _refreshController;
-  final Function _onRefresh;
-  final Function _onLoading;
 
-  const _Successful(this.posts,this._refreshController,this._onRefresh,this._onLoading, {this.title, Key? key}) : super(key: key);
+  const _Successful(this.posts,this._refreshController, {this.title, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -102,15 +87,20 @@ class _Successful extends StatelessWidget {
       enablePullDown: true,
       enablePullUp: true,
       controller: _refreshController,
-      onRefresh: () => _onRefresh(),
-      onLoading: () => _onLoading(),
+      onRefresh: (){
+        context.read<BlogBloc>()..add(const BlogEvent.watchAllBlogStarted(null));
+      },
+      onLoading: (){
+        _refreshController.loadComplete();
+      } ,
       child: ListView.builder(
         itemCount: posts.length,
         itemBuilder: (context, int index) {
           return BlogPostView(
             blog: posts[index],
             callBack: () {
-              print("Blog Clicked"+posts.length.toString());
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>
+                  DoctorViewBlog(posts[index])));
             },
           );
         },

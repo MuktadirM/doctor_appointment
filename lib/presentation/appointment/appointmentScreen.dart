@@ -4,17 +4,15 @@ import 'package:doctor_appointment/domain/models/appointment.dart';
 import 'package:doctor_appointment/domain/utils/value_failure.dart';
 import 'package:doctor_appointment/injection.dart';
 import 'package:doctor_appointment/presentation/appointment/widgets/appointmentCard.dart';
-import 'package:doctor_appointment/presentation/utils/appointmentCardList.dart';
-import 'package:doctor_appointment/presentation/widgets/dateRangePicker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppointmentScreen extends StatelessWidget {
   const AppointmentScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    late List<Appointment> appointments = [];
     return BlocProvider(
       create: (context) => getIt<AppointmentBloc>()
         ..add(AppointmentEvent.watchAllUserAppointmentStarted(null)),
@@ -69,7 +67,11 @@ class AppointmentScreen extends StatelessWidget {
                   ),
                   onPressed: () {
                     HapticFeedback.vibrate();
-                    print('View All clicked');
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                ViewAllDoctorAppointment(appointments)));
                   },
                   child: const Text('view all'),
                 ),
@@ -78,10 +80,17 @@ class AppointmentScreen extends StatelessWidget {
             BlocBuilder<AppointmentBloc, AppointmentState>(
               builder: (context, state) {
                 return state.map(
-                    initial: (_)=> _InitialPage(),
-                    loadInProgress: (_)=> _InitialPage(),
-                    loadSuccess: (data) => _ListOfAppointments(data.items),
-                    loadFailure: (fail) => _loadFailed(fail.failure),
+                  initial: (_) => _InitialPage(),
+                  loadInProgress: (_) => _InitialPage(),
+                  loadSuccess: (data) {
+                    appointments = data.items;
+                    final today = appointments
+                        .where((element) =>
+                            element.dateTime.day == DateTime.now().day)
+                        .toList();
+                    return _ListOfAppointments(today);
+                  },
+                  loadFailure: (fail) => _loadFailed(fail.failure),
                 );
               },
             ),
@@ -109,20 +118,85 @@ class _ListOfAppointments extends StatelessWidget {
           child: AppointmentCard(
             imageUrl: list[i].doctor!.image!,
             docName: list[i].doctor!.name!,
-            docTitle: list[i].doctor!.type.toString(),
+            docTitle: enumDocTypeToString(list[i].doctor!.docType),
             visitingTime: _visitingTime(list[i].dateTime),
+            datetime: list[i].dateTime,
           ),
         );
       },
     );
   }
+
+  static String enumDocTypeToString<T>(T type) =>
+      type.toString().split(".")[1].toUpperCase();
 }
 
-_visitingTime(DateTime dateTime){
-  return dateTime.day.toString()+'-'
-      +dateTime.month.toString()+'-'
-      +dateTime.year.toString()+'  '+ 'Time : '+dateTime.hour.toString()+":"+dateTime.minute.toString()
-  +"  Duration : 30m";
+class ViewAllDoctorAppointment extends StatelessWidget {
+  final List<Appointment> list;
+  const ViewAllDoctorAppointment(this.list, {Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: ListView(
+          shrinkWrap: true,
+          padding: EdgeInsets.all(10),
+          children: [
+            const SizedBox(
+              height: 30,
+            ),
+            Text(
+              'All Appointment',
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 22,
+                fontWeight: FontWeight.w300,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            ListView.builder(
+              scrollDirection: Axis.vertical,
+              physics: NeverScrollableScrollPhysics(),
+              shrinkWrap: true,
+              itemCount: list.length,
+              itemBuilder: (BuildContext context, int i) {
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 8.0),
+                  child: AppointmentCard(
+                    imageUrl: list[i].doctor!.image!,
+                    docName: list[i].doctor!.name!,
+                    docTitle: enumDocTypeToString(list[i].doctor!.docType),
+                    visitingTime: _visitingTime(list[i].dateTime),
+                    datetime: list[i].dateTime,
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  static String enumDocTypeToString<T>(T type) =>
+      type.toString().split(".")[1].toUpperCase();
+}
+
+_visitingTime(DateTime dateTime) {
+  return dateTime.day.toString() +
+      '-' +
+      dateTime.month.toString() +
+      '-' +
+      dateTime.year.toString() +
+      '  ' +
+      'Time : ' +
+      dateTime.hour.toString() +
+      ":" +
+      dateTime.minute.toString() +
+      "  Duration : 30m";
 }
 
 class _InitialPage extends StatelessWidget {
@@ -151,12 +225,12 @@ class _InitialPage extends StatelessWidget {
 
 _loadFailed(ValueFailure failure) {
   return failure.map(
-      unexpected:(_)=> _FailureData(),
-      insufficientPermission: (_)=> _FailureData(),
-      attachmentNotFound: (_)=> _FailureData(),
-      invalidFileFormat: (_)=> _FailureData(),
-      unableToUpdate: (_)=> _FailureData());
-  }
+      unexpected: (_) => _FailureData(),
+      insufficientPermission: (_) => _FailureData(),
+      attachmentNotFound: (_) => _FailureData(),
+      invalidFileFormat: (_) => _FailureData(),
+      unableToUpdate: (_) => _FailureData());
+}
 
 class _FailureData extends StatelessWidget {
   const _FailureData({Key? key}) : super(key: key);
