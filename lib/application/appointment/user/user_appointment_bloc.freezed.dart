@@ -1,7 +1,7 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 // ignore_for_file: unused_element, deprecated_member_use, deprecated_member_use_from_same_package, use_function_type_syntax_for_parameters, unnecessary_const, avoid_init_to_null, invalid_override_different_default_values_named, prefer_expression_function_bodies, annotate_overrides
 
-part of 'appointment_bloc.dart';
+part of 'user_appointment_bloc.dart';
 
 // **************************************************************************
 // FreezedGenerator
@@ -13,105 +13,108 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
-class _$AppointmentEventTearOff {
-  const _$AppointmentEventTearOff();
+class _$UserAppointmentEventTearOff {
+  const _$UserAppointmentEventTearOff();
 
-  _watchAllAppointmentStarted watchAllAppointmentStarted(String? filter) {
-    return _watchAllAppointmentStarted(
+  _watchAllUserAppointmentStarted watchAllUserAppointmentStarted(
+      String? filter) {
+    return _watchAllUserAppointmentStarted(
       filter,
     );
   }
 
-  _AppointmentItemReceived appointmentItemReceived(
+  _UserAppointmentItemReceived userAppointmentItemReceived(
       Either<ValueFailure, List<Appointment>> failureOrItems) {
-    return _AppointmentItemReceived(
+    return _UserAppointmentItemReceived(
       failureOrItems,
     );
   }
 }
 
 /// @nodoc
-const $AppointmentEvent = _$AppointmentEventTearOff();
+const $UserAppointmentEvent = _$UserAppointmentEventTearOff();
 
 /// @nodoc
-mixin _$AppointmentEvent {
+mixin _$UserAppointmentEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? filter) watchAllAppointmentStarted,
+    required TResult Function(String? filter) watchAllUserAppointmentStarted,
     required TResult Function(
             Either<ValueFailure, List<Appointment>> failureOrItems)
-        appointmentItemReceived,
+        userAppointmentItemReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? filter)? watchAllAppointmentStarted,
+    TResult Function(String? filter)? watchAllUserAppointmentStarted,
     TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
-        appointmentItemReceived,
+        userAppointmentItemReceived,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_watchAllAppointmentStarted value)
-        watchAllAppointmentStarted,
-    required TResult Function(_AppointmentItemReceived value)
-        appointmentItemReceived,
+    required TResult Function(_watchAllUserAppointmentStarted value)
+        watchAllUserAppointmentStarted,
+    required TResult Function(_UserAppointmentItemReceived value)
+        userAppointmentItemReceived,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_watchAllAppointmentStarted value)?
-        watchAllAppointmentStarted,
-    TResult Function(_AppointmentItemReceived value)? appointmentItemReceived,
+    TResult Function(_watchAllUserAppointmentStarted value)?
+        watchAllUserAppointmentStarted,
+    TResult Function(_UserAppointmentItemReceived value)?
+        userAppointmentItemReceived,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $AppointmentEventCopyWith<$Res> {
-  factory $AppointmentEventCopyWith(
-          AppointmentEvent value, $Res Function(AppointmentEvent) then) =
-      _$AppointmentEventCopyWithImpl<$Res>;
+abstract class $UserAppointmentEventCopyWith<$Res> {
+  factory $UserAppointmentEventCopyWith(UserAppointmentEvent value,
+          $Res Function(UserAppointmentEvent) then) =
+      _$UserAppointmentEventCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AppointmentEventCopyWithImpl<$Res>
-    implements $AppointmentEventCopyWith<$Res> {
-  _$AppointmentEventCopyWithImpl(this._value, this._then);
+class _$UserAppointmentEventCopyWithImpl<$Res>
+    implements $UserAppointmentEventCopyWith<$Res> {
+  _$UserAppointmentEventCopyWithImpl(this._value, this._then);
 
-  final AppointmentEvent _value;
+  final UserAppointmentEvent _value;
   // ignore: unused_field
-  final $Res Function(AppointmentEvent) _then;
+  final $Res Function(UserAppointmentEvent) _then;
 }
 
 /// @nodoc
-abstract class _$watchAllAppointmentStartedCopyWith<$Res> {
-  factory _$watchAllAppointmentStartedCopyWith(
-          _watchAllAppointmentStarted value,
-          $Res Function(_watchAllAppointmentStarted) then) =
-      __$watchAllAppointmentStartedCopyWithImpl<$Res>;
+abstract class _$watchAllUserAppointmentStartedCopyWith<$Res> {
+  factory _$watchAllUserAppointmentStartedCopyWith(
+          _watchAllUserAppointmentStarted value,
+          $Res Function(_watchAllUserAppointmentStarted) then) =
+      __$watchAllUserAppointmentStartedCopyWithImpl<$Res>;
   $Res call({String? filter});
 }
 
 /// @nodoc
-class __$watchAllAppointmentStartedCopyWithImpl<$Res>
-    extends _$AppointmentEventCopyWithImpl<$Res>
-    implements _$watchAllAppointmentStartedCopyWith<$Res> {
-  __$watchAllAppointmentStartedCopyWithImpl(_watchAllAppointmentStarted _value,
-      $Res Function(_watchAllAppointmentStarted) _then)
-      : super(_value, (v) => _then(v as _watchAllAppointmentStarted));
+class __$watchAllUserAppointmentStartedCopyWithImpl<$Res>
+    extends _$UserAppointmentEventCopyWithImpl<$Res>
+    implements _$watchAllUserAppointmentStartedCopyWith<$Res> {
+  __$watchAllUserAppointmentStartedCopyWithImpl(
+      _watchAllUserAppointmentStarted _value,
+      $Res Function(_watchAllUserAppointmentStarted) _then)
+      : super(_value, (v) => _then(v as _watchAllUserAppointmentStarted));
 
   @override
-  _watchAllAppointmentStarted get _value =>
-      super._value as _watchAllAppointmentStarted;
+  _watchAllUserAppointmentStarted get _value =>
+      super._value as _watchAllUserAppointmentStarted;
 
   @override
   $Res call({
     Object? filter = freezed,
   }) {
-    return _then(_watchAllAppointmentStarted(
+    return _then(_watchAllUserAppointmentStarted(
       filter == freezed
           ? _value.filter
           : filter // ignore: cast_nullable_to_non_nullable
@@ -122,21 +125,22 @@ class __$watchAllAppointmentStartedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_watchAllAppointmentStarted implements _watchAllAppointmentStarted {
-  const _$_watchAllAppointmentStarted(this.filter);
+class _$_watchAllUserAppointmentStarted
+    implements _watchAllUserAppointmentStarted {
+  const _$_watchAllUserAppointmentStarted(this.filter);
 
   @override
   final String? filter;
 
   @override
   String toString() {
-    return 'AppointmentEvent.watchAllAppointmentStarted(filter: $filter)';
+    return 'UserAppointmentEvent.watchAllUserAppointmentStarted(filter: $filter)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _watchAllAppointmentStarted &&
+        (other is _watchAllUserAppointmentStarted &&
             (identical(other.filter, filter) ||
                 const DeepCollectionEquality().equals(other.filter, filter)));
   }
@@ -147,31 +151,31 @@ class _$_watchAllAppointmentStarted implements _watchAllAppointmentStarted {
 
   @JsonKey(ignore: true)
   @override
-  _$watchAllAppointmentStartedCopyWith<_watchAllAppointmentStarted>
-      get copyWith => __$watchAllAppointmentStartedCopyWithImpl<
-          _watchAllAppointmentStarted>(this, _$identity);
+  _$watchAllUserAppointmentStartedCopyWith<_watchAllUserAppointmentStarted>
+      get copyWith => __$watchAllUserAppointmentStartedCopyWithImpl<
+          _watchAllUserAppointmentStarted>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? filter) watchAllAppointmentStarted,
+    required TResult Function(String? filter) watchAllUserAppointmentStarted,
     required TResult Function(
             Either<ValueFailure, List<Appointment>> failureOrItems)
-        appointmentItemReceived,
+        userAppointmentItemReceived,
   }) {
-    return watchAllAppointmentStarted(filter);
+    return watchAllUserAppointmentStarted(filter);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? filter)? watchAllAppointmentStarted,
+    TResult Function(String? filter)? watchAllUserAppointmentStarted,
     TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
-        appointmentItemReceived,
+        userAppointmentItemReceived,
     required TResult orElse(),
   }) {
-    if (watchAllAppointmentStarted != null) {
-      return watchAllAppointmentStarted(filter);
+    if (watchAllUserAppointmentStarted != null) {
+      return watchAllUserAppointmentStarted(filter);
     }
     return orElse();
   }
@@ -179,64 +183,67 @@ class _$_watchAllAppointmentStarted implements _watchAllAppointmentStarted {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_watchAllAppointmentStarted value)
-        watchAllAppointmentStarted,
-    required TResult Function(_AppointmentItemReceived value)
-        appointmentItemReceived,
+    required TResult Function(_watchAllUserAppointmentStarted value)
+        watchAllUserAppointmentStarted,
+    required TResult Function(_UserAppointmentItemReceived value)
+        userAppointmentItemReceived,
   }) {
-    return watchAllAppointmentStarted(this);
+    return watchAllUserAppointmentStarted(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_watchAllAppointmentStarted value)?
-        watchAllAppointmentStarted,
-    TResult Function(_AppointmentItemReceived value)? appointmentItemReceived,
+    TResult Function(_watchAllUserAppointmentStarted value)?
+        watchAllUserAppointmentStarted,
+    TResult Function(_UserAppointmentItemReceived value)?
+        userAppointmentItemReceived,
     required TResult orElse(),
   }) {
-    if (watchAllAppointmentStarted != null) {
-      return watchAllAppointmentStarted(this);
+    if (watchAllUserAppointmentStarted != null) {
+      return watchAllUserAppointmentStarted(this);
     }
     return orElse();
   }
 }
 
-abstract class _watchAllAppointmentStarted implements AppointmentEvent {
-  const factory _watchAllAppointmentStarted(String? filter) =
-      _$_watchAllAppointmentStarted;
+abstract class _watchAllUserAppointmentStarted implements UserAppointmentEvent {
+  const factory _watchAllUserAppointmentStarted(String? filter) =
+      _$_watchAllUserAppointmentStarted;
 
   String? get filter => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$watchAllAppointmentStartedCopyWith<_watchAllAppointmentStarted>
+  _$watchAllUserAppointmentStartedCopyWith<_watchAllUserAppointmentStarted>
       get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class _$AppointmentItemReceivedCopyWith<$Res> {
-  factory _$AppointmentItemReceivedCopyWith(_AppointmentItemReceived value,
-          $Res Function(_AppointmentItemReceived) then) =
-      __$AppointmentItemReceivedCopyWithImpl<$Res>;
+abstract class _$UserAppointmentItemReceivedCopyWith<$Res> {
+  factory _$UserAppointmentItemReceivedCopyWith(
+          _UserAppointmentItemReceived value,
+          $Res Function(_UserAppointmentItemReceived) then) =
+      __$UserAppointmentItemReceivedCopyWithImpl<$Res>;
   $Res call({Either<ValueFailure, List<Appointment>> failureOrItems});
 }
 
 /// @nodoc
-class __$AppointmentItemReceivedCopyWithImpl<$Res>
-    extends _$AppointmentEventCopyWithImpl<$Res>
-    implements _$AppointmentItemReceivedCopyWith<$Res> {
-  __$AppointmentItemReceivedCopyWithImpl(_AppointmentItemReceived _value,
-      $Res Function(_AppointmentItemReceived) _then)
-      : super(_value, (v) => _then(v as _AppointmentItemReceived));
+class __$UserAppointmentItemReceivedCopyWithImpl<$Res>
+    extends _$UserAppointmentEventCopyWithImpl<$Res>
+    implements _$UserAppointmentItemReceivedCopyWith<$Res> {
+  __$UserAppointmentItemReceivedCopyWithImpl(
+      _UserAppointmentItemReceived _value,
+      $Res Function(_UserAppointmentItemReceived) _then)
+      : super(_value, (v) => _then(v as _UserAppointmentItemReceived));
 
   @override
-  _AppointmentItemReceived get _value =>
-      super._value as _AppointmentItemReceived;
+  _UserAppointmentItemReceived get _value =>
+      super._value as _UserAppointmentItemReceived;
 
   @override
   $Res call({
     Object? failureOrItems = freezed,
   }) {
-    return _then(_AppointmentItemReceived(
+    return _then(_UserAppointmentItemReceived(
       failureOrItems == freezed
           ? _value.failureOrItems
           : failureOrItems // ignore: cast_nullable_to_non_nullable
@@ -247,21 +254,21 @@ class __$AppointmentItemReceivedCopyWithImpl<$Res>
 
 /// @nodoc
 
-class _$_AppointmentItemReceived implements _AppointmentItemReceived {
-  const _$_AppointmentItemReceived(this.failureOrItems);
+class _$_UserAppointmentItemReceived implements _UserAppointmentItemReceived {
+  const _$_UserAppointmentItemReceived(this.failureOrItems);
 
   @override
   final Either<ValueFailure, List<Appointment>> failureOrItems;
 
   @override
   String toString() {
-    return 'AppointmentEvent.appointmentItemReceived(failureOrItems: $failureOrItems)';
+    return 'UserAppointmentEvent.userAppointmentItemReceived(failureOrItems: $failureOrItems)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other is _AppointmentItemReceived &&
+        (other is _UserAppointmentItemReceived &&
             (identical(other.failureOrItems, failureOrItems) ||
                 const DeepCollectionEquality()
                     .equals(other.failureOrItems, failureOrItems)));
@@ -274,31 +281,31 @@ class _$_AppointmentItemReceived implements _AppointmentItemReceived {
 
   @JsonKey(ignore: true)
   @override
-  _$AppointmentItemReceivedCopyWith<_AppointmentItemReceived> get copyWith =>
-      __$AppointmentItemReceivedCopyWithImpl<_AppointmentItemReceived>(
-          this, _$identity);
+  _$UserAppointmentItemReceivedCopyWith<_UserAppointmentItemReceived>
+      get copyWith => __$UserAppointmentItemReceivedCopyWithImpl<
+          _UserAppointmentItemReceived>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function(String? filter) watchAllAppointmentStarted,
+    required TResult Function(String? filter) watchAllUserAppointmentStarted,
     required TResult Function(
             Either<ValueFailure, List<Appointment>> failureOrItems)
-        appointmentItemReceived,
+        userAppointmentItemReceived,
   }) {
-    return appointmentItemReceived(failureOrItems);
+    return userAppointmentItemReceived(failureOrItems);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function(String? filter)? watchAllAppointmentStarted,
+    TResult Function(String? filter)? watchAllUserAppointmentStarted,
     TResult Function(Either<ValueFailure, List<Appointment>> failureOrItems)?
-        appointmentItemReceived,
+        userAppointmentItemReceived,
     required TResult orElse(),
   }) {
-    if (appointmentItemReceived != null) {
-      return appointmentItemReceived(failureOrItems);
+    if (userAppointmentItemReceived != null) {
+      return userAppointmentItemReceived(failureOrItems);
     }
     return orElse();
   }
@@ -306,44 +313,45 @@ class _$_AppointmentItemReceived implements _AppointmentItemReceived {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_watchAllAppointmentStarted value)
-        watchAllAppointmentStarted,
-    required TResult Function(_AppointmentItemReceived value)
-        appointmentItemReceived,
+    required TResult Function(_watchAllUserAppointmentStarted value)
+        watchAllUserAppointmentStarted,
+    required TResult Function(_UserAppointmentItemReceived value)
+        userAppointmentItemReceived,
   }) {
-    return appointmentItemReceived(this);
+    return userAppointmentItemReceived(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_watchAllAppointmentStarted value)?
-        watchAllAppointmentStarted,
-    TResult Function(_AppointmentItemReceived value)? appointmentItemReceived,
+    TResult Function(_watchAllUserAppointmentStarted value)?
+        watchAllUserAppointmentStarted,
+    TResult Function(_UserAppointmentItemReceived value)?
+        userAppointmentItemReceived,
     required TResult orElse(),
   }) {
-    if (appointmentItemReceived != null) {
-      return appointmentItemReceived(this);
+    if (userAppointmentItemReceived != null) {
+      return userAppointmentItemReceived(this);
     }
     return orElse();
   }
 }
 
-abstract class _AppointmentItemReceived implements AppointmentEvent {
-  const factory _AppointmentItemReceived(
+abstract class _UserAppointmentItemReceived implements UserAppointmentEvent {
+  const factory _UserAppointmentItemReceived(
           Either<ValueFailure, List<Appointment>> failureOrItems) =
-      _$_AppointmentItemReceived;
+      _$_UserAppointmentItemReceived;
 
   Either<ValueFailure, List<Appointment>> get failureOrItems =>
       throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  _$AppointmentItemReceivedCopyWith<_AppointmentItemReceived> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$UserAppointmentItemReceivedCopyWith<_UserAppointmentItemReceived>
+      get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-class _$AppointmentStateTearOff {
-  const _$AppointmentStateTearOff();
+class _$UserAppointmentStateTearOff {
+  const _$UserAppointmentStateTearOff();
 
   _Initial initial() {
     return const _Initial();
@@ -367,10 +375,10 @@ class _$AppointmentStateTearOff {
 }
 
 /// @nodoc
-const $AppointmentState = _$AppointmentStateTearOff();
+const $UserAppointmentState = _$UserAppointmentStateTearOff();
 
 /// @nodoc
-mixin _$AppointmentState {
+mixin _$UserAppointmentState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
@@ -408,20 +416,20 @@ mixin _$AppointmentState {
 }
 
 /// @nodoc
-abstract class $AppointmentStateCopyWith<$Res> {
-  factory $AppointmentStateCopyWith(
-          AppointmentState value, $Res Function(AppointmentState) then) =
-      _$AppointmentStateCopyWithImpl<$Res>;
+abstract class $UserAppointmentStateCopyWith<$Res> {
+  factory $UserAppointmentStateCopyWith(UserAppointmentState value,
+          $Res Function(UserAppointmentState) then) =
+      _$UserAppointmentStateCopyWithImpl<$Res>;
 }
 
 /// @nodoc
-class _$AppointmentStateCopyWithImpl<$Res>
-    implements $AppointmentStateCopyWith<$Res> {
-  _$AppointmentStateCopyWithImpl(this._value, this._then);
+class _$UserAppointmentStateCopyWithImpl<$Res>
+    implements $UserAppointmentStateCopyWith<$Res> {
+  _$UserAppointmentStateCopyWithImpl(this._value, this._then);
 
-  final AppointmentState _value;
+  final UserAppointmentState _value;
   // ignore: unused_field
-  final $Res Function(AppointmentState) _then;
+  final $Res Function(UserAppointmentState) _then;
 }
 
 /// @nodoc
@@ -431,7 +439,8 @@ abstract class _$InitialCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$InitialCopyWithImpl<$Res> extends _$AppointmentStateCopyWithImpl<$Res>
+class __$InitialCopyWithImpl<$Res>
+    extends _$UserAppointmentStateCopyWithImpl<$Res>
     implements _$InitialCopyWith<$Res> {
   __$InitialCopyWithImpl(_Initial _value, $Res Function(_Initial) _then)
       : super(_value, (v) => _then(v as _Initial));
@@ -447,7 +456,7 @@ class _$_Initial implements _Initial {
 
   @override
   String toString() {
-    return 'AppointmentState.initial()';
+    return 'UserAppointmentState.initial()';
   }
 
   @override
@@ -511,7 +520,7 @@ class _$_Initial implements _Initial {
   }
 }
 
-abstract class _Initial implements AppointmentState {
+abstract class _Initial implements UserAppointmentState {
   const factory _Initial() = _$_Initial;
 }
 
@@ -524,7 +533,7 @@ abstract class _$LoadInProgressCopyWith<$Res> {
 
 /// @nodoc
 class __$LoadInProgressCopyWithImpl<$Res>
-    extends _$AppointmentStateCopyWithImpl<$Res>
+    extends _$UserAppointmentStateCopyWithImpl<$Res>
     implements _$LoadInProgressCopyWith<$Res> {
   __$LoadInProgressCopyWithImpl(
       _LoadInProgress _value, $Res Function(_LoadInProgress) _then)
@@ -541,7 +550,7 @@ class _$_LoadInProgress implements _LoadInProgress {
 
   @override
   String toString() {
-    return 'AppointmentState.loadInProgress()';
+    return 'UserAppointmentState.loadInProgress()';
   }
 
   @override
@@ -605,7 +614,7 @@ class _$_LoadInProgress implements _LoadInProgress {
   }
 }
 
-abstract class _LoadInProgress implements AppointmentState {
+abstract class _LoadInProgress implements UserAppointmentState {
   const factory _LoadInProgress() = _$_LoadInProgress;
 }
 
@@ -619,7 +628,7 @@ abstract class _$LoadSuccessCopyWith<$Res> {
 
 /// @nodoc
 class __$LoadSuccessCopyWithImpl<$Res>
-    extends _$AppointmentStateCopyWithImpl<$Res>
+    extends _$UserAppointmentStateCopyWithImpl<$Res>
     implements _$LoadSuccessCopyWith<$Res> {
   __$LoadSuccessCopyWithImpl(
       _LoadSuccess _value, $Res Function(_LoadSuccess) _then)
@@ -651,7 +660,7 @@ class _$_LoadSuccess implements _LoadSuccess {
 
   @override
   String toString() {
-    return 'AppointmentState.loadSuccess(items: $items)';
+    return 'UserAppointmentState.loadSuccess(items: $items)';
   }
 
   @override
@@ -724,7 +733,7 @@ class _$_LoadSuccess implements _LoadSuccess {
   }
 }
 
-abstract class _LoadSuccess implements AppointmentState {
+abstract class _LoadSuccess implements UserAppointmentState {
   const factory _LoadSuccess(List<Appointment> items) = _$_LoadSuccess;
 
   List<Appointment> get items => throw _privateConstructorUsedError;
@@ -745,7 +754,7 @@ abstract class _$LoadFailureCopyWith<$Res> {
 
 /// @nodoc
 class __$LoadFailureCopyWithImpl<$Res>
-    extends _$AppointmentStateCopyWithImpl<$Res>
+    extends _$UserAppointmentStateCopyWithImpl<$Res>
     implements _$LoadFailureCopyWith<$Res> {
   __$LoadFailureCopyWithImpl(
       _LoadFailure _value, $Res Function(_LoadFailure) _then)
@@ -784,7 +793,7 @@ class _$_LoadFailure implements _LoadFailure {
 
   @override
   String toString() {
-    return 'AppointmentState.loadFailure(failure: $failure)';
+    return 'UserAppointmentState.loadFailure(failure: $failure)';
   }
 
   @override
@@ -857,7 +866,7 @@ class _$_LoadFailure implements _LoadFailure {
   }
 }
 
-abstract class _LoadFailure implements AppointmentState {
+abstract class _LoadFailure implements UserAppointmentState {
   const factory _LoadFailure(ValueFailure failure) = _$_LoadFailure;
 
   ValueFailure get failure => throw _privateConstructorUsedError;

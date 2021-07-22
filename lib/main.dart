@@ -9,10 +9,10 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
     configureInjection(Environment.prod);
     //forcing app to maintain website theme
-  // SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-  //     systemNavigationBarColor: Color(0xFF3b2617), // navigation bar color
-  //     statusBarColor: Color(0xFF3b2617) // status bar color
-  //     ));
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.blueAccent, // navigation bar color
+      statusBarColor: Colors.blue // status bar color
+      ));
   await Firebase.initializeApp();
     runApp(App());
 }

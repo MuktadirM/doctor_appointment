@@ -94,11 +94,13 @@ class AppointmentServices implements IAppointmentServices{
       final userId = _auth.currentUser!.uid;
           List<Appointment> list = [];
           final snap = await ref.doc(userId).get();
-          snap.data()!.forEach((key, value){
-            for(var data in value){
-              list.add(Appointment.fromMap(data));
-            }
-          });
+          if(snap.exists){
+            snap.data()!.forEach((key, value){
+              for(var data in value){
+                list.add(Appointment.fromMap(data));
+              }
+            });
+          }
           yield right(list);
     } on PlatformException catch(ex){
       yield left(const ValueFailure.unexpected());

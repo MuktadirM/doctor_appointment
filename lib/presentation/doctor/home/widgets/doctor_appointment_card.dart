@@ -15,7 +15,9 @@ class DoctorAppointmentCard extends StatelessWidget {
       child: ListTile(
         tileColor: Colors.white70,
         leading: CircleAvatar(
-          child: Image.network(appointment.user!.image!),
+          child: ClipOval(
+            child: Image.network(appointment.user!.image!,height: 100, width: 100,fit: BoxFit.cover,),
+          ),
         ),
         title: Text(appointment.user!.name!),
         subtitle: Text(morningOrEventing(appointment.dateTime.hour)),

@@ -6,10 +6,11 @@ import 'package:doctor_appointment/presentation/utils/time_diff.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class UserProfile extends StatelessWidget {
-  const UserProfile({Key? key}) : super(key: key);
-
+  UserProfile({Key? key}) : super(key: key);
+  RefreshController _refreshController = RefreshController(initialRefresh: false);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,7 +19,9 @@ class UserProfile extends StatelessWidget {
           listener: (ctx, state) {
             state.map(
               initial: (_) {},
-              authenticated: (data) {},
+              authenticated: (data) {
+                _refreshController.loadComplete();
+              },
               unauthenticated: (_) {
                 Navigator.pushAndRemoveUntil(
                   context,
@@ -32,9 +35,21 @@ class UserProfile extends StatelessWidget {
             builder: (context, state) {
               return state.when(
                   initial: () => _Initial(),
-                  authenticated: (data) => _AuthUserDataView(
-                        profile: data,
-                      ),
+                  authenticated: (data) {
+                    return SmartRefresher(
+                      enablePullDown: true,
+                      controller: _refreshController,
+                    onRefresh: (){
+                        context.read<AuthBloc>()..add(const AuthEvent.authCheckRequested());
+                    },
+                      onLoading: (){
+                        _refreshController.loadComplete();
+                      },
+                    child: _AuthUserDataView(
+                      profile: data,
+                    ),
+                    );
+                  },
                   unauthenticated: () => _UnAuth());
             },
           ),

@@ -1,5 +1,4 @@
-import 'package:doctor_appointment/application/appointment/appointment_bloc.dart';
-import 'package:doctor_appointment/domain/models/appointment.dart';
+import 'package:doctor_appointment/application/appointment/user/user_appointment_bloc.dart';
 import 'package:doctor_appointment/domain/models/appointment.dart';
 import 'package:doctor_appointment/domain/utils/value_failure.dart';
 import 'package:doctor_appointment/injection.dart';
@@ -14,8 +13,8 @@ class AppointmentScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     late List<Appointment> appointments = [];
     return BlocProvider(
-      create: (context) => getIt<AppointmentBloc>()
-        ..add(AppointmentEvent.watchAllUserAppointmentStarted(null)),
+      create: (context) => getIt<UserAppointmentBloc>()
+        ..add(UserAppointmentEvent.watchAllUserAppointmentStarted(null)),
       child: SafeArea(
         child: ListView(
           shrinkWrap: true,
@@ -77,7 +76,7 @@ class AppointmentScreen extends StatelessWidget {
                 ),
               ],
             ),
-            BlocBuilder<AppointmentBloc, AppointmentState>(
+            BlocBuilder<UserAppointmentBloc, UserAppointmentState>(
               builder: (context, state) {
                 return state.map(
                   initial: (_) => _InitialPage(),
